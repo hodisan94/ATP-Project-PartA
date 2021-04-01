@@ -13,8 +13,6 @@ public class Maze {
         myMaze = new int[rows][cols];
     }
 
-
-
     public void setMazeBlockZero(int i , int j){
         myMaze[i][j] = 0;
     }
@@ -36,19 +34,19 @@ public class Maze {
         List<Position> positionList = new ArrayList<>();
 
         int i;
-        for(i = 0; i < myMaze[0].length; i++){ // first row
+        for(i = 0; i < myMaze[0].length; i++){ // First row
             positionList.add(new Position(0,i));
         }
 
-        for(i = 1; i < myMaze.length; i++){
+        for(i = 1; i < myMaze.length; i++){ //First column
             positionList.add(new Position(i,0));
         }
 
-        for(i = 1; i < myMaze[0].length; i++){
+        for(i = 1; i < myMaze[0].length; i++){ //Last row
             positionList.add(new Position(myMaze.length - 1 ,i));
         }
 
-        for(i = 1; i < myMaze.length-1; i++){
+        for(i = 1; i < myMaze.length-1; i++){ //Last column
             positionList.add(new Position(i, myMaze[0].length - 1));
         }
 
@@ -58,46 +56,6 @@ public class Maze {
 
         positionList.remove(start);
 
-/*        if (startPosition.getRowIndex() == 0){
-            if( startPosition.getColumnIndex() == 0) {
-
-                int  k = positionList.indexOf(new Position(0,1));
-                //positionList.remove(k);
-                positionList.remove(new Position(1, 0));
-            }
-            else if( startPosition.getColumnIndex() == myMaze.length - 1){
-                positionList.remove(new Position(0,myMaze.length - 2));
-                positionList.remove(new Position(1, myMaze.length - 1));
-            }
-            else {
-                positionList.remove(new Position(0, startPosition.getColumnIndex() - 1));
-                positionList.remove(new Position(0, startPosition.getColumnIndex() + 1));
-            }
-        }
-
-        else if (startPosition.getRowIndex() == myMaze[0].length - 1) {
-            if (startPosition.getColumnIndex() == 0) {
-                positionList.remove(new Position(myMaze[0].length - 2, 0));
-                positionList.remove(new Position(myMaze[0].length - 1, 1));
-            }
-            else if (startPosition.getColumnIndex() == myMaze.length - 1) {
-                positionList.remove(new Position(myMaze[0].length - 1, myMaze.length - 2));
-                positionList.remove(new Position(myMaze[0].length - 2, myMaze.length - 1));
-            }
-            else{
-                positionList.remove(new Position(myMaze[0].length - 1, startPosition.getColumnIndex() - 1));
-                positionList.remove(new Position(myMaze[0].length - 1, startPosition.getColumnIndex() + 1));
-
-            }
-        }
-        else if(startPosition.getColumnIndex() == 0){
-            positionList.remove(new Position(myMaze[0].length - 1, 0));
-            positionList.remove(new Position(myMaze[0].length + 1, 0));
-        }
-        else{
-            positionList.remove(new Position(myMaze[0].length - 1, myMaze.length - 1));
-            positionList.remove(new Position(myMaze[0].length + 1, myMaze.length - 1));
-        }*/
         boolean near_it = true;
         while (near_it){
             int end = rd.nextInt(positionList.size());
@@ -108,10 +66,13 @@ public class Maze {
                 near_it = false;
         }
 
-       // int end = rd.nextInt(positionList.size());
-        //goalPosition = positionList.get(end);
     }
 
+    /**
+     * This method prints the maze
+     * " " is for pass way
+     * # is for a wall
+     */
     public void printMaze()
     {
         int rows = this.myMaze.length;
@@ -137,6 +98,11 @@ public class Maze {
 
     }
 
+    /**
+     * This method prints the maze
+     * 0 is for pass way
+     * 1 is for a wall
+     */
     public void print() {
         int rows = this.myMaze.length;
         int cols = this.myMaze[0].length;
@@ -157,14 +123,14 @@ public class Maze {
 
 
 
-    /**
-     * @return the start position of the maze
-     */
 
     public int[][] getMyMaze() {
         return myMaze;
     }
 
+    /**
+     * @return the start position of the maze
+     */
     public Position getStartPosition() {
         return startPosition;
     }
@@ -179,9 +145,4 @@ public class Maze {
     public int getCellValue(int i , int j ){
         return myMaze[i][j];
     }
-
-    /**
-     * This method prints the maze
-     */
-
 }
