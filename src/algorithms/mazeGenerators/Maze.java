@@ -9,14 +9,31 @@ public class Maze {
     private Position goalPosition;
     private int[][] myMaze;
 
+    /**
+     * The function is a maze constructor
+     * @param rows is the number of the maze rows
+     * @param cols is the number of the maze columns
+     */
     public Maze(int rows, int cols) {
         myMaze = new int[rows][cols];
     }
 
+    /**
+     * This function sets the position (i,j) in the maze to 0
+     * @param i is the x position
+     * @param j is the y position
+     */
     public void setMazeBlockZero(int i , int j){
         myMaze[i][j] = 0;
     }
 
+
+    /**
+     * This function finds if a position is in the bound of the maze
+     * @param i is the x position
+     * @param j is the y position
+     * @return true if the position is in bound and false if not
+     */
     public boolean in_bound(int i , int j ){
         if(i > myMaze.length -1 || j > myMaze[0].length  -1 || i< 0 || j < 0 )
             return false;
@@ -24,6 +41,10 @@ public class Maze {
 
     }
 
+    /**
+     * The function set the values in the maze, choose the start and the goal positions
+     * @param x is the value to which the maze values are changed
+     */
     public void setMyMaze(int x){
         for( int i = 0; i < myMaze.length; i++) {
             for (int j = 0; j < myMaze[0].length; j++) {
@@ -122,8 +143,9 @@ public class Maze {
     }
 
 
-
-
+    /**
+     * @return the maze
+     */
     public int[][] getMyMaze() {
         return myMaze;
     }
@@ -136,12 +158,17 @@ public class Maze {
     }
 
     /**
-     * @return the end position of the maze
+     * @return the goal position of the maze
      */
     public Position getGoalPosition() {
         return goalPosition;
     }
 
+    /**
+     * @param i is the row position
+     * @param j is the column position
+     * @return the value of the position
+     */
     public int getCellValue(int i , int j ){
         return myMaze[i][j];
     }

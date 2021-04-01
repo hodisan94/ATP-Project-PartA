@@ -3,6 +3,12 @@ package algorithms.mazeGenerators;
 import java.util.*;
 
 public class MyMazeGenerator extends AMazeGenerator{
+    /**
+     * @param rows is the number of the maze rows
+     * @param cols is the number of the maze columns
+     * @return a maze
+     * The function is based on Prim's algorithm
+     */
     @Override
     public Maze generate(int rows, int cols) {
         Maze myMaze = new Maze(rows,cols);
@@ -90,8 +96,6 @@ public class MyMazeGenerator extends AMazeGenerator{
                 }
             }
         }
-        //myMaze.printMaze();
-        //myMaze.print();
 
         return myMaze;
     }
