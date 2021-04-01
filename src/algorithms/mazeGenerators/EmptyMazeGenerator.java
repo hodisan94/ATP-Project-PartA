@@ -6,6 +6,8 @@ public class EmptyMazeGenerator extends AMazeGenerator{
         Maze myMaze = new Maze(rows, cols);
         myMaze.setMyMaze(0);
 
+
+        //yuval
         return myMaze;
     }
 }
