@@ -91,6 +91,7 @@ public class MyMazeGenerator extends AMazeGenerator{
             }
         }
         myMaze.printMaze();
+        myMaze.print();
 
         return myMaze;
     }

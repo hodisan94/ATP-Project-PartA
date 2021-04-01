@@ -137,6 +137,24 @@ public class Maze {
 
     }
 
+    public void print() {
+        int rows = this.myMaze.length;
+        int cols = this.myMaze[0].length;
+        String smaze = this.toString();
+        for (int i = 0; i < rows; i++) {
+            System.out.print("{ ");
+            for (int j = 0; j < cols; j++) {
+                if (this.startPosition.getRowIndex() == i && this.startPosition.getColumnIndex() == j)
+                    System.out.print("S ");
+                else if (this.goalPosition.getRowIndex() == i && this.goalPosition.getColumnIndex() == j)
+                    System.out.print("E ");
+                else
+                    System.out.print(this.myMaze[i][j] + " ");
+            }
+            System.out.println("}");
+        }
+    }
+
 
 
     /**
@@ -165,7 +183,5 @@ public class Maze {
     /**
      * This method prints the maze
      */
-    public void Print(){
 
-    }
 }
