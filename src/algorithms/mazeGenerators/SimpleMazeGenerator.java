@@ -98,7 +98,7 @@ public class SimpleMazeGenerator extends AMazeGenerator {
             }
 
         }
-            myMaze.printMaze();
+            //myMaze.printMaze();
 
             return myMaze;
         }
