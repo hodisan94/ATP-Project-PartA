@@ -2,7 +2,7 @@ package algorithms.search;
 
 public interface ISearchingAlgorithm {
 
-    public MazeState search(ISearchingAlgorithm isa);
+    public Solution solve(ISearchable is);
 
     public int getNumberOfVisitedNodes();
 }
