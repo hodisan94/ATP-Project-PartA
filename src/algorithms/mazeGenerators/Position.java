@@ -50,6 +50,19 @@ public class Position {
     }
 
 
+    public boolean compare(Object obj)
+    {
+        if(obj instanceof Position)
+        {
+            Position pobj = (Position)obj;
+            if(this.getRowIndex() == pobj.getRowIndex() && this.getColumnIndex() == pobj.getColumnIndex())
+                return true;
+
+        }
+        return false;
+    }
+
+
     /**
      * @return return the position as a string
      */

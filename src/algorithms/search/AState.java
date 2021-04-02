@@ -8,6 +8,10 @@ public abstract class AState {
         this.stepCost = stepCost;
     }
 
+    public AState(){
+        this.stepCost = 0;
+    }
+
     public int getStepCost() {
         return stepCost;
     }
@@ -15,4 +19,7 @@ public abstract class AState {
     public void setStepCost(int stepCost) {
         this.stepCost = stepCost;
     }
+
+
+    public abstract boolean equal(Object obj);
 }
