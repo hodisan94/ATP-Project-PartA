@@ -15,6 +15,11 @@ public class Position {
         this.y_pos = y_pos;
     }
 
+    public Position(Position position) {
+        this.x_pos = position.getRowIndex();
+        this.y_pos = position.getColumnIndex();
+    }
+
 
     /**
      * @return the x position

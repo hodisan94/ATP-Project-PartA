@@ -1,4 +1,18 @@
 package algorithms.search;
 
 public abstract class AState {
+
+    private int stepCost;
+
+    public AState(int stepCost) {
+        this.stepCost = stepCost;
+    }
+
+    public int getStepCost() {
+        return stepCost;
+    }
+
+    public void setStepCost(int stepCost) {
+        this.stepCost = stepCost;
+    }
 }
