@@ -38,7 +38,6 @@ public class Maze {
         if(i > myMaze.length -1 || j > myMaze[0].length  -1 || i< 0 || j < 0 )
             return false;
         return true;
-
     }
 
     /**
@@ -172,4 +171,8 @@ public class Maze {
     public int getCellValue(int i , int j ){
         return myMaze[i][j];
     }
+
+    public int getRows() { return myMaze.length; }
+
+    public int getColumns() { return myMaze[0].length; }
 }

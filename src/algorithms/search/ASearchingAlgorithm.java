@@ -4,8 +4,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
     private int numOfStates;
     protected AState start;
     protected AState goal;
-
-
+    protected String name;
 
     public ASearchingAlgorithm() {
         this.numOfStates = 0;

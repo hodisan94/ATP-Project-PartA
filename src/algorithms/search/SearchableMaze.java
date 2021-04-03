@@ -3,6 +3,7 @@ package algorithms.search;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchableMaze implements ISearchable {
@@ -24,7 +25,51 @@ public class SearchableMaze implements ISearchable {
     }
 
     @Override
-    public List<AState> getAllSuccessors(AState state) {
-        return null;
+    public List<AState> getAllSuccessors(AState state){
+        List<AState> successors = new ArrayList<>();
+
+        if(this.myMaze.in_bound(state.getRowPosition() - 1, state.getColumnPosition() - 1)){
+            successors.add(new MazeState(15, new Position(state.getRowPosition() - 1, state.getColumnPosition() - 1)));
+        }
+
+        else if(this.myMaze.in_bound(state.getRowPosition() - 1, state.getColumnPosition())){
+            successors.add(new MazeState(10, new Position(state.getRowPosition() - 1, state.getColumnPosition())));
+        }
+
+        else if(this.myMaze.in_bound(state.getRowPosition() - 1, state.getColumnPosition() + 1)){
+            successors.add(new MazeState(15, new Position(state.getRowPosition() - 1, state.getColumnPosition() + 1)));
+        }
+
+        else if(this.myMaze.in_bound(state.getRowPosition(), state.getColumnPosition() - 1)){
+            successors.add(new MazeState(10, new Position(state.getRowPosition(), state.getColumnPosition() - 1)));
+        }
+
+        else if(this.myMaze.in_bound(state.getRowPosition(), state.getColumnPosition() + 1)){
+            successors.add(new MazeState(10, new Position(state.getRowPosition(), state.getColumnPosition() + 1)));
+        }
+
+        else if(this.myMaze.in_bound(state.getRowPosition() + 1, state.getColumnPosition() - 1)){
+            successors.add(new MazeState(15, new Position(state.getRowPosition() + 1, state.getColumnPosition() - 1)));
+        }
+
+        else if(this.myMaze.in_bound(state.getRowPosition() + 1, state.getColumnPosition())){
+            successors.add(new MazeState(10, new Position(state.getRowPosition() + 1, state.getColumnPosition())));
+        }
+
+        else if(this.myMaze.in_bound(state.getRowPosition() + 1, state.getColumnPosition() + 1)){
+            successors.add(new MazeState(15, new Position(state.getRowPosition() + 1, state.getColumnPosition() + 1)));
+        }
+
+        return successors;
+    }
+
+    @Override
+    public int getRows() {
+        return this.myMaze.getRows();
+    }
+
+    @Override
+    public int getColumns() {
+        return this.myMaze.getColumns();
     }
 }

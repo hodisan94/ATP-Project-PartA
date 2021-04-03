@@ -2,10 +2,11 @@ package algorithms.search;
 
 import algorithms.mazeGenerators.Position;
 
+import java.util.ArrayList;
+
 public class MazeState extends AState {
 
     private Position position;
-
 
     public MazeState(int stepCost, Position positionState) {
         super(stepCost);
@@ -28,4 +29,13 @@ public class MazeState extends AState {
         }
         return false;
     }
+
+    public int getRowPosition(){
+        return this.position.getRowIndex();
+    }
+
+    public int getColumnPosition(){
+        return this.position.getColumnIndex();
+    }
+
 }

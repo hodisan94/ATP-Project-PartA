@@ -20,6 +20,10 @@ public abstract class AState {
         this.stepCost = stepCost;
     }
 
-
     public abstract boolean equal(Object obj);
+
+    public abstract int getRowPosition();
+
+    public abstract int getColumnPosition();
+
 }
