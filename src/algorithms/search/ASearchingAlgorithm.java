@@ -12,7 +12,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
 
     public abstract Solution solve(ISearchable is);
 
-    public int getNumberOfVisitedNodes(){
+    public int getNumberOfNodesEvaluated(){
         return numOfStates;
     }
 }

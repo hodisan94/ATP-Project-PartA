@@ -27,7 +27,13 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
 
 
+
         return null;
+    }
+
+    @Override
+    public int getNumberOfNodesEvaluated() {
+        return 0;
     }
 
 
@@ -43,6 +49,8 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
         stateQueue.add(start);
         visited[start.getRowPosition()][start.getColumnPosition()] = true;
+
+        int counter = 0;
 
         while (!stateQueue.isEmpty()){
             AState cell = stateQueue.poll();

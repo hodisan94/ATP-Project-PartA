@@ -38,4 +38,9 @@ public class MazeState extends AState {
         return this.position.getColumnIndex();
     }
 
+    @Override
+    public String toString() {
+        return this.position.toString();
+    }
+
 }

@@ -26,4 +26,6 @@ public abstract class AState {
 
     public abstract int getColumnPosition();
 
+    public abstract String toString();
+
 }
