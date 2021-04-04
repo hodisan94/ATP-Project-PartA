@@ -14,6 +14,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
     public ASearchingAlgorithm() {
         this.stepsMap = new HashMap<>();
         this.numOfStates = 0;
+        visited = new LinkedList<>();
     }
 
     public Solution solve(ISearchable is) {
@@ -21,6 +22,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
         goal = is.getGoalState();
         stepsMap.put(start, null);
         addToOpenList(start);
+        visited.add(start);
 
         while (!openList.isEmpty()) {
             AState nextState = removeFromOpenList();
@@ -31,8 +33,9 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
             }
             List<AState> neighbors = is.getAllSuccessors(nextState);
             for (AState neighbor : neighbors) {
-                if (!visited.contains(neighbor))
+                if (visited.contains(neighbor))
                     continue;
+                //continue;
                 if (!openList.contains(neighbor)) {
                     stepsMap.put(neighbor, nextState);
                     addToOpenList(neighbor);
