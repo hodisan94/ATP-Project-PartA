@@ -38,9 +38,10 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
         AState addToPath = openList.poll();
         path.add(addToPath);
         AState cell = openList.poll();
+        //AState celll = stepsMap.get(openList.poll());
 
-        while (cell.getCameFrom() != null){
-            if(cell.equal(addToPath.getCameFrom())){
+        while (stepsMap.get(cell) != null){
+            if(cell.equal(stepsMap.get(addToPath))){
                 path.add(0, cell);
                 addToPath = cell;
             }

@@ -2,6 +2,7 @@ package algorithms.search;
 
 import algorithms.mazeGenerators.Position;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -23,6 +24,11 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         goal = is.getGoalState();
         dfs(start, goal, is);
 
+        return null;
+    }
+
+    @Override
+    public ArrayList<AState> findPath() {
         return null;
     }
 
