@@ -11,6 +11,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
     public BreadthFirstSearch() {
         name = "BreadthFirstSearch";
+        openList = new
     }
 
     @Override
@@ -29,11 +30,6 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
 
         return null;
-    }
-
-    @Override
-    public int getNumberOfNodesEvaluated() {
-        return 0;
     }
 
 
