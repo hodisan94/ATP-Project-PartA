@@ -11,7 +11,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
     public BreadthFirstSearch() {
         name = "BreadthFirstSearch";
-        openList = new
+        //openList = new
     }
 
     @Override

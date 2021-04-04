@@ -39,4 +39,11 @@ public abstract class AState {
 
     public abstract String toString();
 
+    public void setCameFrom(Position cameFrom) {
+        this.cameFrom = cameFrom;
+    }
+
+    public Position getCameFrom() {
+        return cameFrom;
+    }
 }
