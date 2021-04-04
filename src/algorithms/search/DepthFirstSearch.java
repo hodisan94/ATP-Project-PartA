@@ -33,7 +33,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
     }
 
     public void dfs(AState start, AState goal, ISearchable is) {
-        Stack<AState> stack = new Stack<>();
+       /* Stack<AState> stack = new Stack<>();
         boolean[][] visited = new boolean[is.getRows()][is.getColumns()];
 
         for (int i = 0; i < is.getRows(); i++) {
@@ -61,6 +61,6 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
                     }
                 }
             }
-        }
+        }*/
     }
 }

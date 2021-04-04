@@ -1,6 +1,15 @@
 package algorithms.search;
 
-public class BestFirstSearch {
+import java.util.PriorityQueue;
+
+public class BestFirstSearch extends BreadthFirstSearch {
+
+    public BestFirstSearch() {
+        name = "BestFirstSearch";
+        openList = new PriorityQueue<AState>();
+    }
+
+
 
 
 }

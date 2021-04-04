@@ -7,7 +7,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
     protected AState start;
     protected AState goal;
     protected String name;
-    protected PriorityQueue<AState> openList;
+    protected Collection<AState> openList;
     protected Map<AState, AState> stepsMap;
     protected LinkedList<AState> visited;
 
@@ -26,9 +26,9 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
         this.numOfStates++;
     }
 
-    public PriorityQueue<AState> getOpenList(){
-        return openList;
-    }
+    public abstract AState removeFromOpenList();
+
+    public abstract void addToOpenList(AState state);
 
 
     public ArrayList<AState> findPath(){
@@ -38,7 +38,6 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
         AState addToPath = openList.poll();
         path.add(addToPath);
         AState cell = openList.poll();
-        //AState celll = stepsMap.get(openList.poll());
 
         while (stepsMap.get(cell) != null){
             if(cell.equal(stepsMap.get(addToPath))){

@@ -8,7 +8,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
     public BreadthFirstSearch() {
         name = "BreadthFirstSearch";
-        openList = new PriorityQueue<AState>();
+        openList = new LinkedList<AState>();
     }
 
     @Override
@@ -29,7 +29,15 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         return sol;
     }
 
+    @Override
+    public AState removeFromOpenList() {
+        return ((Queue<AState>)openList).poll();
+    }
 
+    @Override
+    public void addToOpenList(AState state) {
+        openList.add(state);
+    }
 
 
     public void bfs(AState start, AState goal, ISearchable is){
