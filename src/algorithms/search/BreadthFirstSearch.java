@@ -16,7 +16,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         return this.name;
     }
 
-    @Override
+ /*   @Override
     public Solution solve(ISearchable is) {
         start = is.getStartState();
         goal = is.getGoalState();
@@ -27,7 +27,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         sol.setStates(findPath());
 
         return sol;
-    }
+    }*/
 
     @Override
     public AState removeFromOpenList() {

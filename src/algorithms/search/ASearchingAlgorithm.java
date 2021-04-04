@@ -26,7 +26,8 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
             AState nextState = removeFromOpenList();
             numOfStates++;
             if (nextState.equal(goal)) {
-                break; // WTF
+                return findPath(nextState);
+                //break; // WTF
             }
             List<AState> neighbors = is.getAllSuccessors(nextState);
             for (AState neighbor : neighbors) {
@@ -40,6 +41,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
             visited.add(nextState);
 
         }
+        return null;
     }
 
         public int getNumberOfNodesEvaluated () {
@@ -55,25 +57,27 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
         public abstract void addToOpenList (AState state);
 
 
-/*        public ArrayList<AState> findPath () {
+        public Solution findPath(AState goalState) {
 
-            ArrayList<AState> path = new ArrayList<>();
+            Stack<AState> path  = new Stack<>();
 
-            AState addToPath = openList.poll();
-            path.add(addToPath);
-            AState cell = openList.poll();
+            //ArrayList<AState> path = new ArrayList<>();
+
+            AState addToPath = removeFromOpenList();
+            path.push(goalState);
+            AState cell = removeFromOpenList();
 
             while (stepsMap.get(cell) != null) {
                 if (cell.equal(stepsMap.get(addToPath))) {
-                    path.add(0, cell);
+                    path.push(cell);
                     addToPath = cell;
                 }
-                cell = openList.poll();
+                cell = removeFromOpenList();
             }
 
-            return path;
+            return new Solution(path);
 
-        }*/
+        }
 
     }
 
