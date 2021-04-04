@@ -10,7 +10,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
 
     public DepthFirstSearch() {
         name = "DepthFirstSearch";
-        //openList = new
+        openList = new Stack<>();
     }
 
     @Override
@@ -22,9 +22,20 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
     public Solution solve(ISearchable is) {
         start = is.getStartState();
         goal = is.getGoalState();
-        dfs(start, goal, is);
+        //dfs(start, goal, is);
 
         return null;
+    }
+
+    @Override
+    public AState removeFromOpenList() {
+        return ((Stack<AState>)openList).pop();
+    }
+
+    @Override
+    public void addToOpenList(AState state) {
+
+        ((Stack<AState>)openList).push(state);
     }
 
     @Override
@@ -32,8 +43,8 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         return null;
     }
 
-    public void dfs(AState start, AState goal, ISearchable is) {
-       /* Stack<AState> stack = new Stack<>();
+/*    public void dfs(AState start, AState goal, ISearchable is) {
+        Stack<AState> stack = new Stack<>();
         boolean[][] visited = new boolean[is.getRows()][is.getColumns()];
 
         for (int i = 0; i < is.getRows(); i++) {
@@ -61,6 +72,6 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
                     }
                 }
             }
-        }*/
-    }
+        }
+    }*/
 }
