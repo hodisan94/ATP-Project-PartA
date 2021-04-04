@@ -6,10 +6,13 @@ import java.util.ArrayList;
 
 public class MazeState extends AState {
 
+    private Position cameFrom;
     private Position position;
 
-    public MazeState(int stepCost, Position positionState, AState cameFrom) {
-        super(stepCost, new Position(cameFrom.getRowPosition(), cameFrom.getColumnPosition()));
+
+    public MazeState(int stepCost, Position positionState, Position cameFrom) {
+        super(stepCost);
+        this.cameFrom = new Position(cameFrom);
         this.position = new Position(positionState);
     }
 
@@ -20,6 +23,10 @@ public class MazeState extends AState {
     public Position getPosition() {
         return position;
     }
+
+/*    public AState getCameFrom(){
+        return cameFrom;
+    }*/
 
     @Override
     public boolean equal(Object obj) {
@@ -34,9 +41,11 @@ public class MazeState extends AState {
         return this.position.getRowIndex();
     }
 
+
     public int getColumnPosition(){
         return this.position.getColumnIndex();
     }
+
 
     @Override
     public String toString() {

@@ -1,7 +1,6 @@
 package algorithms.search;
 
-import java.util.ArrayList;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
     private int numOfStates;
@@ -9,8 +8,11 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
     protected AState goal;
     protected String name;
     protected PriorityQueue<AState> openList;
+    protected Map<AState, AState> stepsMap;
+    protected LinkedList<AState> visited;
 
     public ASearchingAlgorithm() {
+        this.stepsMap = new HashMap<>();
         this.numOfStates = 0;
     }
 
@@ -28,6 +30,26 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
         return openList;
     }
 
-    public abstract ArrayList<AState> findPath();
+
+    public ArrayList<AState> findPath(){
+
+        ArrayList<AState> path = new ArrayList<>();
+
+        AState addToPath = openList.poll();
+        path.add(addToPath);
+        AState cell = openList.poll();
+
+        while (cell.getCameFrom() != null){
+            if(cell.equal(addToPath.getCameFrom())){
+                path.add(0, cell);
+                addToPath = cell;
+            }
+            cell = openList.poll();
+        }
+
+        return path;
+
+    }
+
 
 }
