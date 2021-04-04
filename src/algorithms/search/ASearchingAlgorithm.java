@@ -1,5 +1,6 @@
 package algorithms.search;
 
+import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
@@ -18,4 +19,15 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
     public int getNumberOfNodesEvaluated(){
         return numOfStates;
     }
+
+    public void setNumberOfNodes(){
+        this.numOfStates++;
+    }
+
+    public PriorityQueue<AState> getOpenList(){
+        return openList;
+    }
+
+    public abstract ArrayList<AState> findPath();
+
 }

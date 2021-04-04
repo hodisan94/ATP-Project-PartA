@@ -2,16 +2,13 @@ package algorithms.search;
 
 import algorithms.mazeGenerators.Position;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm{
 
     public BreadthFirstSearch() {
         name = "BreadthFirstSearch";
-        //openList = new
+        openList = new PriorityQueue<>();
     }
 
     @Override
@@ -24,13 +21,13 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         start = is.getStartState();
         goal = is.getGoalState();
         bfs(start, goal, is);
+        Solution sol = new Solution();
+        //sol.setStates();
 
-
-
-
-
-        return null;
+        return sol;
     }
+
+
 
 
     public void bfs(AState start, AState goal, ISearchable is){
@@ -44,9 +41,8 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         }
 
         stateQueue.add(start);
+        openList.add(start);
         visited[start.getRowPosition()][start.getColumnPosition()] = true;
-
-        int counter = 0;
 
         while (!stateQueue.isEmpty()){
             AState cell = stateQueue.poll();
@@ -60,10 +56,23 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
                     if (visited[neighbor.getRowPosition()][neighbor.getColumnPosition()] == false){
                         visited[neighbor.getRowPosition()][neighbor.getColumnPosition()] = true;
                         stateQueue.add(neighbor);
+                        openList.add(neighbor);
                     }
                 }
             }
         }
     }
 
+
+    @Override
+    public ArrayList<AState> findPath() {
+
+
+
+
+
+
+
+        return null;
+    }
 }

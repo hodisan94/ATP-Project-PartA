@@ -8,8 +8,8 @@ public class MazeState extends AState {
 
     private Position position;
 
-    public MazeState(int stepCost, Position positionState) {
-        super(stepCost);
+    public MazeState(int stepCost, Position positionState, AState cameFrom) {
+        super(stepCost, new Position(cameFrom.getRowPosition(), cameFrom.getColumnPosition()));
         this.position = new Position(positionState);
     }
 

@@ -30,38 +30,38 @@ public class SearchableMaze implements ISearchable {
 
         if(this.myMaze.in_bound(state.getRowPosition() - 1, state.getColumnPosition() - 1) && this.myMaze.getMyMaze()[state.getRowPosition()-1][state.getColumnPosition()-1] != 1){
             if (this.myMaze.getMyMaze()[state.getRowPosition()-1][state.getColumnPosition()] == 0 ||this.myMaze.getMyMaze()[state.getRowPosition()][state.getColumnPosition()-1] == 0 )
-            successors.add(new MazeState(15, new Position(state.getRowPosition() - 1, state.getColumnPosition() - 1)));
+            successors.add(new MazeState(15, new Position(state.getRowPosition() - 1, state.getColumnPosition() - 1), state));
         }
 
         else if(this.myMaze.in_bound(state.getRowPosition() - 1, state.getColumnPosition()) && this.myMaze.getMyMaze()[state.getRowPosition()-1][state.getColumnPosition()] != 1){
-            successors.add(new MazeState(10, new Position(state.getRowPosition() - 1, state.getColumnPosition())));
+            successors.add(new MazeState(10, new Position(state.getRowPosition() - 1, state.getColumnPosition()), state));
         }
 
         else if(this.myMaze.in_bound(state.getRowPosition() - 1, state.getColumnPosition() + 1) && this.myMaze.getMyMaze()[state.getRowPosition()-1][state.getColumnPosition()+1] != 1){
             if (this.myMaze.getMyMaze()[state.getRowPosition()-1][state.getColumnPosition()] == 0 ||this.myMaze.getMyMaze()[state.getRowPosition()][state.getColumnPosition()+1] == 0 )
-                successors.add(new MazeState(15, new Position(state.getRowPosition() - 1, state.getColumnPosition() + 1)));
+                successors.add(new MazeState(15, new Position(state.getRowPosition() - 1, state.getColumnPosition() + 1), state));
         }
 
         else if(this.myMaze.in_bound(state.getRowPosition(), state.getColumnPosition() - 1) && this.myMaze.getMyMaze()[state.getRowPosition()][state.getColumnPosition()-1] != 1){
-            successors.add(new MazeState(10, new Position(state.getRowPosition(), state.getColumnPosition() - 1)));
+            successors.add(new MazeState(10, new Position(state.getRowPosition(), state.getColumnPosition() - 1), state));
         }
 
         else if(this.myMaze.in_bound(state.getRowPosition(), state.getColumnPosition() + 1) && this.myMaze.getMyMaze()[state.getRowPosition()][state.getColumnPosition()+1] != 1){
-            successors.add(new MazeState(10, new Position(state.getRowPosition(), state.getColumnPosition() + 1)));
+            successors.add(new MazeState(10, new Position(state.getRowPosition(), state.getColumnPosition() + 1), state));
         }
 
         else if(this.myMaze.in_bound(state.getRowPosition() + 1, state.getColumnPosition() - 1) && this.myMaze.getMyMaze()[state.getRowPosition()+1][state.getColumnPosition()-1] != 1){
             if (this.myMaze.getMyMaze()[state.getRowPosition()+1][state.getColumnPosition()] == 0 ||this.myMaze.getMyMaze()[state.getRowPosition()][state.getColumnPosition()-1] == 0 )
-                successors.add(new MazeState(15, new Position(state.getRowPosition() + 1, state.getColumnPosition() - 1)));
+                successors.add(new MazeState(15, new Position(state.getRowPosition() + 1, state.getColumnPosition() - 1), state));
         }
 
         else if(this.myMaze.in_bound(state.getRowPosition() + 1, state.getColumnPosition()) && this.myMaze.getMyMaze()[state.getRowPosition()+1][state.getColumnPosition()] != 1){
-            successors.add(new MazeState(10, new Position(state.getRowPosition() + 1, state.getColumnPosition())));
+            successors.add(new MazeState(10, new Position(state.getRowPosition() + 1, state.getColumnPosition()), state));
         }
 
         else if(this.myMaze.in_bound(state.getRowPosition() + 1, state.getColumnPosition() + 1) && this.myMaze.getMyMaze()[state.getRowPosition()+1][state.getColumnPosition()+1] != 1){
             if (this.myMaze.getMyMaze()[state.getRowPosition()+1][state.getColumnPosition()] == 0 ||this.myMaze.getMyMaze()[state.getRowPosition()][state.getColumnPosition()+1] == 0 )
-                successors.add(new MazeState(15, new Position(state.getRowPosition() + 1, state.getColumnPosition() + 1)));
+                successors.add(new MazeState(15, new Position(state.getRowPosition() + 1, state.getColumnPosition() + 1), state));
         }
 
         return successors;
