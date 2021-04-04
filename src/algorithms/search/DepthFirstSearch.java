@@ -38,10 +38,6 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         ((Stack<AState>)openList).push(state);
     }
 
-    @Override
-    public ArrayList<AState> findPath() {
-        return null;
-    }
 
 /*    public void dfs(AState start, AState goal, ISearchable is) {
         Stack<AState> stack = new Stack<>();

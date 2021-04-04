@@ -16,40 +16,64 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
         this.numOfStates = 0;
     }
 
-    public abstract Solution solve(ISearchable is);
+    public Solution solve(ISearchable is) {
+        start = is.getStartState();
+        goal = is.getGoalState();
+        stepsMap.put(start, null);
+        addToOpenList(start);
 
-    public int getNumberOfNodesEvaluated(){
-        return numOfStates;
-    }
-
-    public void setNumberOfNodes(){
-        this.numOfStates++;
-    }
-
-    public abstract AState removeFromOpenList();
-
-    public abstract void addToOpenList(AState state);
-
-
-    public ArrayList<AState> findPath(){
-
-        ArrayList<AState> path = new ArrayList<>();
-
-        AState addToPath = openList.poll();
-        path.add(addToPath);
-        AState cell = openList.poll();
-
-        while (stepsMap.get(cell) != null){
-            if(cell.equal(stepsMap.get(addToPath))){
-                path.add(0, cell);
-                addToPath = cell;
+        while (!openList.isEmpty()) {
+            AState nextState = removeFromOpenList();
+            numOfStates++;
+            if (nextState.equal(goal)) {
+                break; // WTF
             }
-            cell = openList.poll();
+            List<AState> neighbors = is.getAllSuccessors(nextState);
+            for (AState neighbor : neighbors) {
+                if (!visited.contains(neighbor))
+                    continue;
+                if (!openList.contains(neighbor)) {
+                    stepsMap.put(neighbor, nextState);
+                    addToOpenList(neighbor);
+                }
+            }
+            visited.add(nextState);
+
+        }
+    }
+
+        public int getNumberOfNodesEvaluated () {
+            return numOfStates;
         }
 
-        return path;
+        public void setNumberOfNodes () {
+            this.numOfStates++;
+        }
+
+        public abstract AState removeFromOpenList ();
+
+        public abstract void addToOpenList (AState state);
+
+
+/*        public ArrayList<AState> findPath () {
+
+            ArrayList<AState> path = new ArrayList<>();
+
+            AState addToPath = openList.poll();
+            path.add(addToPath);
+            AState cell = openList.poll();
+
+            while (stepsMap.get(cell) != null) {
+                if (cell.equal(stepsMap.get(addToPath))) {
+                    path.add(0, cell);
+                    addToPath = cell;
+                }
+                cell = openList.poll();
+            }
+
+            return path;
+
+        }*/
 
     }
 
-
-}

@@ -21,7 +21,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         start = is.getStartState();
         goal = is.getGoalState();
 
-        bfs(start, goal, is);
+        //bfs(start, goal, is);
 
         Solution sol = new Solution();
         sol.setStates(findPath());
@@ -40,15 +40,15 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
     }
 
 
-    public void bfs(AState start, AState goal, ISearchable is){
+/*    public void bfs(AState start, AState goal, ISearchable is){
         //Queue<AState> stateQueue = new LinkedList<>();
         //boolean[][] visited = new boolean[is.getRows()][is.getColumns()];
 
-        /*for (int i = 0; i < is.getRows(); i++ ){
+        *//*for (int i = 0; i < is.getRows(); i++ ){
             for (int j = 0; j < is.getColumns(); j++ ){
                 visited[i][j] = false;
             }
-        }*/
+        }*//*
 
         //stateQueue.add(start);
         stepsMap.put(start, null);
@@ -75,15 +75,15 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
                         openList.add(neighbor);
                     }
 
-                    /*if (visited[neighbor.getRowPosition()][neighbor.getColumnPosition()] == false){
+                    *//*if (visited[neighbor.getRowPosition()][neighbor.getColumnPosition()] == false){
                         visited[neighbor.getRowPosition()][neighbor.getColumnPosition()] = true;
                         stateQueue.add(neighbor);
                         openList.add(neighbor);
-                    }*/
+                    }*//*
                 }
                 visited.add(cell);
             }
         }
-    }
+    }*/
 
 }
