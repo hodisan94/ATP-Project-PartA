@@ -19,14 +19,14 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         return this.name;
     }
 
-    @Override
+    /*@Override
     public Solution solve(ISearchable is) {
         start = is.getStartState();
         goal = is.getGoalState();
-        //dfs(start, goal, is);
+        dfs(start, goal, is);
 
         return null;
-    }
+    }*/
 
     @Override
     public AState removeFromOpenList() {
