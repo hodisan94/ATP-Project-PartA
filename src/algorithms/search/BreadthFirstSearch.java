@@ -51,7 +51,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
         return false;
     }
-
+//bloa bla
 
 /*    public void bfs(AState start, AState goal, ISearchable is){
         //Queue<AState> stateQueue = new LinkedList<>();
