@@ -22,6 +22,22 @@ public abstract class AState {
 
     public abstract boolean equal(Object obj);
 
+    /*@Override
+    public int compareTo(Object obj) {
+
+        if(!(obj instanceof AState))
+            return 0;
+
+        AState state = (AState)obj;
+        if (this.stepCost > state.getStepCost())
+            return 1;
+        else if (this.stepCost < state.getStepCost())
+            return -1;
+        else
+            return 0;
+
+    }*/
+
     public abstract String toString();
 
 

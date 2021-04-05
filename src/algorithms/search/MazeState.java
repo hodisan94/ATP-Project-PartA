@@ -37,6 +37,7 @@ public class MazeState extends AState {
         return false;
     }
 
+
     public int getRowPosition(){
         return this.position.getRowIndex();
     }
