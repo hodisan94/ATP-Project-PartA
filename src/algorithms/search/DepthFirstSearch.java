@@ -3,6 +3,7 @@ package algorithms.search;
 import algorithms.mazeGenerators.Position;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -34,8 +35,17 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
 
     @Override
     public void addToOpenList(AState state) {
-
         ((Stack<AState>)openList).push(state);
+    }
+
+    @Override
+    public boolean openListContains(AState state) {
+        for (int i = 0; i < openList.size(); i++){
+            if (((Stack<AState>)openList).get(i).equal(state))
+                return true;
+        }
+
+        return false;
     }
 
 

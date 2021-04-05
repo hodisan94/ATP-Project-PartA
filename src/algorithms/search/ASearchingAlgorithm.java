@@ -22,7 +22,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
         goal = is.getGoalState();
         stepsMap.put(start, null);
         addToOpenList(start);
-        visited.add(start);
+        //visited.add(start);
 
         while (!openList.isEmpty()) {
             AState nextState = removeFromOpenList();
@@ -33,10 +33,10 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
             }
             List<AState> neighbors = is.getAllSuccessors(nextState);
             for (AState neighbor : neighbors) {
-                if (visited.contains(neighbor))
+                if (visitedContains(neighbor))
                     continue;
                 //continue;
-                if (!openList.contains(neighbor)) {
+                if (!openListContains(neighbor)) {
                     stepsMap.put(neighbor, nextState);
                     addToOpenList(neighbor);
                 }
@@ -47,26 +47,46 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
         return null;
     }
 
-        public int getNumberOfNodesEvaluated () {
-            return numOfStates;
+    public int getNumberOfNodesEvaluated () {
+        return numOfStates;
+    }
+
+    public void setNumberOfNodes () {
+        this.numOfStates++;
+    }
+
+    public abstract AState removeFromOpenList ();
+
+    public abstract void addToOpenList (AState state);
+
+    public abstract boolean openListContains(AState state);
+
+    private boolean visitedContains(AState state) {
+
+        for (int i = 0; i < visited.size(); i++){
+            if(visited.get(i).equal(state))
+                return true;
         }
 
-        public void setNumberOfNodes () {
-            this.numOfStates++;
-        }
-
-        public abstract AState removeFromOpenList ();
-
-        public abstract void addToOpenList (AState state);
+        return false;
+    }
 
 
-        public Solution findPath(AState goalState) {
+    public Solution findPath(AState goalState) {
 
             Stack<AState> path  = new Stack<>();
 
+            AState cell = goalState;
+
+            while(cell != null){
+                path.push(cell);
+                cell = stepsMap.get(cell);
+            }
+
+
             //ArrayList<AState> path = new ArrayList<>();
 
-            AState addToPath = removeFromOpenList();
+            /*AState addToPath = removeFromOpenList();
             path.push(goalState);
             AState cell = removeFromOpenList();
 
@@ -76,7 +96,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
                     addToPath = cell;
                 }
                 cell = removeFromOpenList();
-            }
+            }*/
 
             return new Solution(path);
 

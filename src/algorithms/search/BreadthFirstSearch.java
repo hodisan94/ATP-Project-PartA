@@ -34,9 +34,22 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         return ((Queue<AState>)openList).poll();
     }
 
+
     @Override
     public void addToOpenList(AState state) {
         openList.add(state);
+    }
+
+
+    @Override
+    public boolean openListContains(AState state) {
+
+        for (int i = 0; i < openList.size(); i++){
+            if (((LinkedList<AState>)openList).get(i).equal(state))
+                return true;
+        }
+
+        return false;
     }
 
 
