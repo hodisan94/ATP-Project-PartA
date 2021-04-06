@@ -95,4 +95,16 @@ public class Maze3D {
 
     }
 
+    public int getRows(){
+        return this.Map[0].length;
+    }
+
+    public int getColumns(){
+        return this.Map[0][0].length;
+    }
+
+    public int getDepth(){
+        return this.Map.length;
+    }
+
 }

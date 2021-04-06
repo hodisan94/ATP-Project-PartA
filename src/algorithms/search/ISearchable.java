@@ -10,8 +10,4 @@ public interface ISearchable  {
 
     List<AState> getAllSuccessors(AState state);
 
-    int getRows();
-
-    int getColumns();
-
 }

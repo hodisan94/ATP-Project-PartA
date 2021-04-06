@@ -16,7 +16,6 @@ public class SearchableMaze implements ISearchable {
 
     @Override
     public AState getStartState() {
-
         return new MazeState(myMaze.getStartPosition());
     }
 
@@ -77,12 +76,12 @@ public class SearchableMaze implements ISearchable {
         return successors;
     }
 
-    @Override
+
     public int getRows() {
         return this.myMaze.getRows();
     }
 
-    @Override
+
     public int getColumns() {
         return this.myMaze.getColumns();
     }
