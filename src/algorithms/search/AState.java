@@ -8,6 +8,7 @@ public abstract class AState {
     public AState(int stepCost) {
         this.stepCost = stepCost;
     }
+
     public AState() {
         this.stepCost = 0;
     }
@@ -44,14 +45,16 @@ public abstract class AState {
 
     public abstract String toString();
 
+    public int compareTo(Object o) {
+        if (!(o instanceof AState))
+            return 0;
+        AState aState = (AState) o;
+        return Double.compare(aState.stepCost, this.stepCost);
 
 
+        //public abstract int getRowPosition();
 
-
-
-    //public abstract int getRowPosition();
-
-    //public abstract int getColumnPosition();
+        //public abstract int getColumnPosition();
 
 
 
@@ -69,4 +72,5 @@ public abstract class AState {
     public void setStepCost(int stepCost) {
         this.stepCost = stepCost;
     }*/
+    }
 }

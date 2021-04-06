@@ -68,7 +68,23 @@ public class MyMazeGenerator extends AMazeGenerator{
                 }
             }
         }
-        if (myMaze.getMyMaze()[myMaze.getGoalPosition().getRowIndex()][myMaze.getGoalPosition().getColumnIndex()] == 1)
+        if ((myMaze.getRows() < 3 && myMaze.getColumns() <= 3) || (myMaze.getRows() <= 3 && myMaze.getColumns() < 3) )
+        {
+            {
+                myMaze.setMazeBlockZero(myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex());
+                if (myMaze.in_bound(myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex()) )
+                    myMaze.setMazeBlockZero(myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex());
+                else if (myMaze.in_bound(myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex()) )
+                    myMaze.setMazeBlockZero(myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex());
+                else if (myMaze.in_bound(myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()+1))
+                    myMaze.setMazeBlockZero(myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()+1);
+                else if (myMaze.in_bound(myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()-1) )
+                    myMaze.setMazeBlockZero(myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()-1);
+
+            }
+
+        }
+        if ((myMaze.getMyMaze()[myMaze.getGoalPosition().getRowIndex()][myMaze.getGoalPosition().getColumnIndex()] == 1) || (myMaze.getRows() < 3 && myMaze.getColumns() <= 3) || (myMaze.getRows() <= 3 && myMaze.getColumns() < 3))
         {
             myMaze.setMazeBlockZero(myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex());
             if (myMaze.in_bound(myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex()) && myMaze.getMyMaze()[myMaze.getGoalPosition().getRowIndex()+1][myMaze.getGoalPosition().getColumnIndex()] == 0)
@@ -92,7 +108,7 @@ public class MyMazeGenerator extends AMazeGenerator{
             }
         }
         //myMaze.printMaze();
-        myMaze.print();
+       // myMaze.print();
 
         return myMaze;
     }

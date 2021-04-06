@@ -8,7 +8,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
     public BreadthFirstSearch() {
         name = "BreadthFirstSearch";
-        openList = new LinkedList<AState>();
+        openList = new LinkedList<>();
     }
 
     @Override
@@ -43,14 +43,14 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
     /*@Override
     public boolean openListContains(AState state) {
-
-        for (int i = 0; i < openList.size(); i++){
+        if (openList.contains(state))
+            return true;
+/*        for (int i = 0; i < openList.size(); i++){
             if (((LinkedList<AState>)openList).get(i).equal(state))
                 return true;
-        }
+        }*/
 
-        return false;
-    }*/
+        //return false;
     @Override
     public boolean openListContains(AState state) {
 
