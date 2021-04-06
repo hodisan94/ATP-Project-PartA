@@ -41,7 +41,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
     @Override
     public boolean openListContains(AState state) {
         for (int i = 0; i < openList.size(); i++){
-            if (((Stack<AState>)openList).get(i).equal(state))
+            if (((Stack<AState>)openList).get(i).equals(state))
                 return true;
         }
 

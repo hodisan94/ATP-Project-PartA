@@ -57,7 +57,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         Iterator<AState> stateIterator = openList.iterator();
 
         while (stateIterator.hasNext()){
-            if(stateIterator.next().equal(state))
+            if(stateIterator.next().equals(state))
                 return true;
         }
 

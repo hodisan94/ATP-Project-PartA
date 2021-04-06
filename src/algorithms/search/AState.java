@@ -20,8 +20,10 @@ public abstract class AState {
         this.stepCost = stepCost;
     }
 
-    public abstract boolean equal(Object obj);
+    @Override
+    public abstract boolean equals(Object obj);
 
+    @Override
     public abstract int hashCode();
 
     /*@Override
