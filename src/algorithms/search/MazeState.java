@@ -7,13 +7,10 @@ import java.util.Objects;
 
 public class MazeState extends AState {
 
-    //private Position cameFrom;
     private Position position;
-
 
     public MazeState(int stepCost, Position positionState) {
         super(stepCost);
-        //this.cameFrom = new Position(cameFrom);
         this.position = new Position(positionState);
     }
 
@@ -25,9 +22,6 @@ public class MazeState extends AState {
         return position;
     }
 
-/*    public AState getCameFrom(){
-        return cameFrom;
-    }*/
 
     @Override
     public boolean equals(Object obj) {
