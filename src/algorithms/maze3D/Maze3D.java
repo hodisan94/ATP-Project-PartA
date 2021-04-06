@@ -22,4 +22,5 @@ public class Maze3D {
     public int[][][] getMap() {
         return Map;
     }
+
 }
