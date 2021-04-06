@@ -128,7 +128,7 @@ public class Maze3D {
 
             }
             if (d != depth-1) {
-                for (int i = 0; i < (Map[0].length + 2) * 2 - 1; i++) {
+                for (int i = 0; i < (Map[0][0].length + 2) * 2 - 1; i++) {
                     System.out.print("-");
                 }
                 System.out.println();
