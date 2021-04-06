@@ -1,5 +1,7 @@
 package algorithms.mazeGenerators;
 
+import java.util.Objects;
+
 public class Position {
 
     private int x_pos;
@@ -50,7 +52,8 @@ public class Position {
     }
 
 
-    public boolean compare(Object obj)
+    @Override
+    public boolean equals(Object obj)
     {
         if(obj instanceof Position)
         {
@@ -62,6 +65,11 @@ public class Position {
         return false;
     }
 
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x_pos, y_pos);
+    }
 
     /**
      * @return return the position as a string

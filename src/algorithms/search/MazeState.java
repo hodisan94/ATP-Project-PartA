@@ -3,16 +3,17 @@ package algorithms.search;
 import algorithms.mazeGenerators.Position;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MazeState extends AState {
 
-    private Position cameFrom;
+    //private Position cameFrom;
     private Position position;
 
 
-    public MazeState(int stepCost, Position positionState, Position cameFrom) {
+    public MazeState(int stepCost, Position positionState) {
         super(stepCost);
-        this.cameFrom = new Position(cameFrom);
+        //this.cameFrom = new Position(cameFrom);
         this.position = new Position(positionState);
     }
 
@@ -32,11 +33,15 @@ public class MazeState extends AState {
     public boolean equal(Object obj) {
         if(obj instanceof MazeState) {
             MazeState mazeState = (MazeState) obj;
-            return position.compare(mazeState.position);
+            return position.equals(mazeState.position);
         }
         return false;
     }
 
+    @Override
+    public int hashCode(){
+        return position.hashCode();
+    }
 
     public int getRowPosition(){
         return this.position.getRowIndex();

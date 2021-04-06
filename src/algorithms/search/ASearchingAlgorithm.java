@@ -9,12 +9,12 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
     protected String name;
     protected Collection<AState> openList;
     protected Map<AState, AState> stepsMap;
-    protected LinkedList<AState> visited;
+    protected HashSet<AState> visited;
 
     public ASearchingAlgorithm() {
         this.stepsMap = new HashMap<>();
         this.numOfStates = 0;
-        visited = new LinkedList<>();
+        visited = new HashSet<>();
     }
 
     public Solution solve(ISearchable is) {
@@ -33,7 +33,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
             }
             List<AState> neighbors = is.getAllSuccessors(nextState);
             for (AState neighbor : neighbors) {
-                if (visitedContains(neighbor))
+                if (visited.contains(neighbor))
                     continue;
                 //continue;
                 if (!openListContains(neighbor)) {
@@ -62,13 +62,18 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
     public abstract boolean openListContains(AState state);
 
     private boolean visitedContains(AState state) {
+        Iterator<AState> stateIterator = visited.iterator();
 
-        for (int i = 0; i < visited.size(); i++){
-            if(visited.get(i).equal(state))
+        while (stateIterator.hasNext()){
+            if(stateIterator.next().equal(state))
                 return true;
         }
 
         return false;
+
+        /*if(visited.contains(state.hashCode()))
+            return true;
+        return false;*/
     }
 
 

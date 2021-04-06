@@ -22,6 +22,8 @@ public abstract class AState {
 
     public abstract boolean equal(Object obj);
 
+    public abstract int hashCode();
+
     /*@Override
     public int compareTo(Object obj) {
 

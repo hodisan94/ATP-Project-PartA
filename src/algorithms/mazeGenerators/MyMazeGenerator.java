@@ -91,8 +91,21 @@ public class MyMazeGenerator extends AMazeGenerator{
             }
         }
         //myMaze.printMaze();
-        myMaze.print();
+        //myMaze.print();
 
         return myMaze;
     }
+
+
+    public Maze generate1(int rows, int cols) {
+        Maze myMaze = new Maze(rows,cols);
+        myMaze.setMyMaze(0);
+
+
+
+
+
+        return myMaze;
+    }
+
 }

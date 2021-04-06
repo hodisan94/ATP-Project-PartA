@@ -23,7 +23,7 @@ public class BestFirstSearch extends BreadthFirstSearch {
             }
         };
 
-        PriorityQueue<AState> openList = new PriorityQueue<AState>(costComparator);
+        openList = new PriorityQueue<AState>(costComparator);
     }
 
     public String getName(){
