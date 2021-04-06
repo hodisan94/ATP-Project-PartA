@@ -107,4 +107,35 @@ public class Maze3D {
         return this.Map.length;
     }
 
+    public void print() {
+        int depth = this.Map.length;
+        int rows = this.Map[0].length;
+        int cols = this.Map[0][0].length;
+        System.out.println("{");
+        for (int d = 0; d < depth; d++) {
+            //System.out.print("{ ");
+            for (int r = 0; r < rows; r++) {
+                System.out.print("{ ");
+                for (int c = 0; c < cols; c++) {
+                    if (this.StartPosition.getDepthIndex() == d && this.StartPosition.getRowIndex() == r && this.StartPosition.getColumnIndex() == c)
+                        System.out.print("S ");
+                    else if (this.GoalPosition.getDepthIndex() == d && this.GoalPosition.getRowIndex() == r && this.GoalPosition.getColumnIndex() == c)
+                        System.out.print("E ");
+                    else
+                        System.out.print(this.Map[d][r][c] + " ");
+                }
+                System.out.println("}");
+
+            }
+            if (d != depth-1) {
+                for (int i = 0; i < (Map[0].length + 2) * 2 - 1; i++) {
+                    System.out.print("-");
+                }
+                System.out.println();
+            }
+
+        }
+        System.out.println("}");
+    }
+
 }
