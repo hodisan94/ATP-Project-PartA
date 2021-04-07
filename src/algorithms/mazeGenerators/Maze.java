@@ -80,7 +80,7 @@ public class Maze {
         while (near_it){
             int end = rd.nextInt(positionList.size());
             goalPosition = positionList.get(end);
-            if ((goalPosition.getColumnIndex() + 1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex()) || (goalPosition.getColumnIndex() -1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex()) || (goalPosition.getRowIndex() + 1 == startPosition.getRowIndex() && getGoalPosition().getColumnIndex() == startPosition.getColumnIndex()) || (goalPosition.getRowIndex() -1 == startPosition.getRowIndex()&& getGoalPosition().getColumnIndex() == startPosition.getColumnIndex()))
+            if ((goalPosition.getColumnIndex() + 1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex()) || (goalPosition.getColumnIndex() -1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex()) || (goalPosition.getRowIndex() + 1 == startPosition.getRowIndex() && getGoalPosition().getColumnIndex() == startPosition.getColumnIndex()) || (goalPosition.getRowIndex() -1 == startPosition.getRowIndex()&& getGoalPosition().getColumnIndex() == startPosition.getColumnIndex()) ||(goalPosition.getRowIndex()  == startPosition.getRowIndex()&& getGoalPosition().getColumnIndex() == startPosition.getColumnIndex()) )
                 near_it = true;
             else
                 near_it = false;
