@@ -22,21 +22,18 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
         goal = is.getGoalState();
         stepsMap.put(start, null);
         addToOpenList(start);
-        //visited.add(start);
 
         while (!openList.isEmpty()) {
             AState nextState = removeFromOpenList();
             numOfStates++;
             if (nextState.equals(goal)) {
                 return findPath(nextState);
-                //break; // WTF
             }
             List<AState> neighbors = is.getAllSuccessors(nextState);
             for (AState neighbor : neighbors) {
                 if (visited.contains(neighbor))
                     continue;
-                //continue;
-                if (!openListContains(neighbor)) {
+                if (!openList.contains(neighbor)) {
                     stepsMap.put(neighbor, nextState);
                     addToOpenList(neighbor);
                 }
@@ -59,22 +56,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
 
     public abstract void addToOpenList (AState state);
 
-    public abstract boolean openListContains(AState state);
 
-    private boolean visitedContains(AState state) {
-        Iterator<AState> stateIterator = visited.iterator();
-
-        while (stateIterator.hasNext()){
-            if(stateIterator.next().equals(state))
-                return true;
-        }
-
-        return false;
-
-        /*if(visited.contains(state.hashCode()))
-            return true;
-        return false;*/
-    }
 
 
     public Solution findPath(AState goalState) {

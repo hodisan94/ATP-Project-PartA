@@ -97,7 +97,6 @@ public class Maze {
     {
         int rows = this.myMaze.length;
         int cols  = this.myMaze[0].length;
-        String smaze = this.toString();
         for (int i = 0; i < rows; i++) {
             System.out.print("{ ");
             for (int j = 0; j < cols; j++) {

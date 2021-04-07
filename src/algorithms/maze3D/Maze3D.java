@@ -113,7 +113,6 @@ public class Maze3D {
         int cols = this.Map[0][0].length;
         System.out.println("{");
         for (int d = 0; d < depth; d++) {
-            //System.out.print("{ ");
             for (int r = 0; r < rows; r++) {
                 System.out.print("{ ");
                 for (int c = 0; c < cols; c++) {

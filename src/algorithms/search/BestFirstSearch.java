@@ -35,16 +35,6 @@ public class BestFirstSearch extends BreadthFirstSearch {
         openList.add(state);
     }
 
-    /*@Override
-    public boolean openListContains(AState state) {
-
-        for (int i = 0; i < openList.size(); i++){
-            if (((Queue<AState>)openList).get(i).equal(state))
-                return true;
-        }
-
-        return false;
-    }*/
 
 
 

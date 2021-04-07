@@ -14,7 +14,6 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         myMaze.setMyMaze(1);
         myMaze.setMazeBlockZero(myMaze.getStartPosition().getRowIndex(), myMaze.getStartPosition().getColumnIndex());
         Position current_place =new Position(myMaze.getStartPosition().getRowIndex(),myMaze.getStartPosition().getColumnIndex());
-        //List<Position> positionList = new ArrayList<>();
         boolean finised = false;
         while (!finised) {
             if (current_place.getRowIndex() > myMaze.getGoalPosition().getRowIndex())

@@ -27,50 +27,11 @@ public abstract class AState {
     @Override
     public abstract int hashCode();
 
-    /*@Override
-    public int compareTo(Object obj) {
 
-        if(!(obj instanceof AState))
-            return 0;
-
-        AState state = (AState)obj;
-        if (this.stepCost > state.getStepCost())
-            return 1;
-        else if (this.stepCost < state.getStepCost())
-            return -1;
-        else
-            return 0;
-
-    }*/
 
     public abstract String toString();
 
-    public int compareTo(Object o) {
-        if (!(o instanceof AState))
-            return 0;
-        AState aState = (AState) o;
-        return Double.compare(aState.stepCost, this.stepCost);
 
-
-        //public abstract int getRowPosition();
-
-        //public abstract int getColumnPosition();
-
-
-
-   /* public void setCameFrom(Position cameFrom) {
-        this.cameFrom = cameFrom;
     }
 
-    public Position getCameFrom() {
-        return cameFrom;
-    }
-    public int getStepCost() {
-        return stepCost;
-    }
 
-    public void setStepCost(int stepCost) {
-        this.stepCost = stepCost;
-    }*/
-    }
-}
