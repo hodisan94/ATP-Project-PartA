@@ -33,4 +33,17 @@ public class Maze3DState extends AState {
     public String toString() {
         return this.position.toString();
     }
+
+
+    public int getRow(){
+        return position.getRowIndex();
+    }
+
+    public int getColumn(){
+        return position.getColumnIndex();
+    }
+
+    public int getDepth(){
+        return position.getDepthIndex();
+    }
 }
