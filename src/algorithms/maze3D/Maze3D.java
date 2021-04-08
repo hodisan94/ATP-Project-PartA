@@ -1,7 +1,5 @@
 package algorithms.maze3D;
 
-import algorithms.mazeGenerators.Maze;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,23 +10,44 @@ public class Maze3D {
     private Position3D GoalPosition;
     private int[][][] Map;
 
-    public Maze3D(int depth , int rows , int cols)
-    {
+    /**
+     * This function is the maze3D's constructor
+     * @param depth is the number of the maze depth
+     * @param rows is the number of the maze rows
+     * @param cols is the number of the maze columns
+     */
+    public Maze3D(int depth , int rows , int cols) {
         Map = new int[depth][rows][cols];
     }
 
+    /**
+     * @return the start position3D of the maze
+     */
     public Position3D getStartPosition() {
         return StartPosition;
     }
 
+    /**
+     * @return the goal position3D of the maze
+     */
     public Position3D getGoalPosition() {
         return GoalPosition;
     }
 
+    /**
+     * @return the maze3D
+     */
     public int[][][] getMap() {
         return Map;
     }
 
+    /**
+     * This function finds if a position3D is in the bound of the maze
+     * @param d is the depth position3D
+     * @param r is the row position3D
+     * @param c is the column position3D
+     * @return
+     */
     public boolean in_bound3D(int d , int r , int c)
     {
         if (d < 0 || r < 0 || c < 0 || d > Map.length -1  || r > Map[0].length -1 || c > Map[0][0].length -1  )
@@ -37,10 +56,20 @@ public class Maze3D {
     }
 
 
+    /**
+     * This function sets the position3D (d,r,c) in the maze to 0
+     * @param d is the depth position3D
+     * @param r is the row position3D
+     * @param c is the column position3D
+     */
     public void setMazeBlockZero3D(int d ,int r , int c){
         Map[d][r][c] = 0;
     }
 
+    /**
+     * The function sets the values in the maze3D, choose the start and the goal positions
+     * @param x is the value to which the maze3D values are changed
+     */
     public void setMyMaze3D(int x){
 
         for (int d= 0  ; d < Map.length ; d++)
@@ -95,18 +124,32 @@ public class Maze3D {
 
     }
 
+    /**
+     * @return the number of rows in the maze3D
+     */
     public int getRows(){
         return this.Map[0].length;
     }
 
+    /**
+     * @return the number of columns in the maze3D
+     */
     public int getColumns(){
         return this.Map[0][0].length;
     }
 
+    /**
+     * @return the number of depth in the maze3D
+     */
     public int getDepth(){
         return this.Map.length;
     }
 
+    /**
+     * This method prints the maze
+     * 0 is for pass way
+     * 1 is for a wall
+     */
     public void print() {
         int depth = this.Map.length;
         int rows = this.Map[0].length;

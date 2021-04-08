@@ -7,7 +7,7 @@ public abstract class AMazeGenerator implements IMazeGenerator{
     /**
      * @param rows is the number of the maze rows
      * @param cols is the number of the maze columns
-     * @return a long number that represent in milliseconds the run time that took to the generate function
+     * @return a long number that represent the run time of the generate function in milliseconds
      */
     @Override
     public long measureAlgorithmTimeMillis(int rows, int cols) {

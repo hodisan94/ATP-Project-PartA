@@ -14,8 +14,6 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         return this.name;
     }
 
-
-
     @Override
     public AState removeFromOpenList() {
         return ((Stack<AState>)openList).pop();

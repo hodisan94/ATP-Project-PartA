@@ -11,20 +11,34 @@ public class SearchableMaze3D implements ISearchable {
 
     private Maze3D maze3D;
 
+    /**
+     * A constructor
+     * @param maze3D
+     */
     public SearchableMaze3D(Maze3D maze3D) {
         this.maze3D = maze3D;
     }
 
+    /**
+     * @return the start state of the maze
+     */
     @Override
     public AState getStartState() {
         return new Maze3DState(maze3D.getStartPosition());
     }
 
+    /**
+     * @return the goal state of the maze
+     */
     @Override
     public AState getGoalState() {
         return new Maze3DState(maze3D.getGoalPosition());
     }
 
+    /**
+     * @param state
+     * @return a list of all the successors' state
+     */
     @Override
     public List<AState> getAllSuccessors(AState state) {
 

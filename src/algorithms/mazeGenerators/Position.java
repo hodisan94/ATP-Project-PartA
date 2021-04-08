@@ -52,12 +52,17 @@ public class Position {
     }
 
 
+    /**
+     * @param obj is an object that should be Position to compare the position
+     * @return true if obj and the position are equals anf false if not
+     */
     @Override
     public boolean equals(Object obj)
     {
         if(obj instanceof Position)
         {
             Position pobj = (Position)obj;
+
             if(this.getRowIndex() == pobj.getRowIndex() && this.getColumnIndex() == pobj.getColumnIndex())
                 return true;
 
@@ -66,13 +71,16 @@ public class Position {
     }
 
 
+    /**
+     * @return the position's hash code
+     */
     @Override
     public int hashCode() {
         return Objects.hash(x_pos, y_pos);
     }
 
     /**
-     * @return return the position as a string
+     * @return the position as a string
      */
     @Override
     public String toString() {

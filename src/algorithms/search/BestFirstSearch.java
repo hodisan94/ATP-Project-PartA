@@ -1,17 +1,25 @@
 package algorithms.search;
 
 import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.PriorityQueue;
-import java.util.Queue;
+
 
 public class BestFirstSearch extends BreadthFirstSearch {
 
+    /**
+     * A constructor method
+     */
     public BestFirstSearch() {
         super();
         name = "BestFirstSearch";
+
         Comparator<AState> costComparator = new Comparator<AState>() {
 
+            /**
+             * @param o1
+             * @param o2
+             * @return 1 if o1's stepCost is bigger than o2's stepCost, return -1 if o1's stepCost is smaller than o2's stepCost and 0 if they have the same stepCost
+             */
             @Override
             public int compare(AState o1, AState o2) {
                 if (o1.getStepCost() > o2.getStepCost())
@@ -24,18 +32,22 @@ public class BestFirstSearch extends BreadthFirstSearch {
         };
 
         openList = new PriorityQueue<>(costComparator);
-
     }
 
-    public String getName(){
+    /**
+     * @return the name of the solver algorithm
+     */
+    public String getName() {
         return name;
     }
 
+    /**
+     * A method that add a new element to openList
+     * @param state is the element to add to the openList
+     */
+    @Override
     public void addToOpenList(AState state) {
         openList.add(state);
     }
-
-
-
 
 }

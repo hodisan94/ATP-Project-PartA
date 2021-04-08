@@ -9,6 +9,12 @@ public class Position3D {
     private int RowIndex;
     private int ColumnIndex;
 
+    /**
+     * A constructor
+     * @param depthIndex
+     * @param rowIndex
+     * @param columnIndex
+     */
     public Position3D(int depthIndex,int rowIndex , int columnIndex)
     {
         this.DepthIndex = depthIndex;
@@ -16,6 +22,10 @@ public class Position3D {
         this.ColumnIndex = columnIndex;
     }
 
+    /**
+     * A constructor
+     * @param position3D
+     */
     public Position3D(Position3D position3D)
     {
         this.DepthIndex = position3D.getDepthIndex();
@@ -23,14 +33,23 @@ public class Position3D {
         this.ColumnIndex = position3D.getColumnIndex();
     }
 
+    /**
+     * @return the position3D's depth
+     */
     public int getDepthIndex() {
         return DepthIndex;
     }
 
+    /**
+     * @return the position3D's row
+     */
     public int getRowIndex() {
         return RowIndex;
     }
 
+    /**
+     * @return the position3D's column
+     */
     public int getColumnIndex() {
         return ColumnIndex;
     }
@@ -47,7 +66,10 @@ public class Position3D {
         ColumnIndex = columnIndex;
     }
 
-
+    /**
+     * @param obj is an object that should be Position3D to compare the position3D
+     * @return true if obj and the position are equals anf false if not
+     */
     @Override
     public boolean equals(Object obj)
     {
@@ -60,11 +82,17 @@ public class Position3D {
         return false;
     }
 
+    /**
+     * @return the position3D's hash code
+     */
     @Override
     public int hashCode() {
         return Objects.hash(DepthIndex, RowIndex, ColumnIndex);
     }
 
+    /**
+     * @return the position3D as a string
+     */
     @Override
     public String toString() {
         return "{" +

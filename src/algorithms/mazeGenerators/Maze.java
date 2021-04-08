@@ -41,7 +41,7 @@ public class Maze {
     }
 
     /**
-     * The function set the values in the maze, choose the start and the goal positions
+     * The function sets the values in the maze, choose the start and the goal positions
      * @param x is the value to which the maze values are changed
      */
     public void setMyMaze(int x){
@@ -170,7 +170,17 @@ public class Maze {
         return myMaze[i][j];
     }
 
-    public int getRows() { return myMaze.length; }
+    /**
+     * @return the number of rows in the maze
+     */
+    public int getRows() {
+        return myMaze.length;
+    }
 
-    public int getColumns() { return myMaze[0].length; }
+    /**
+     * @return the number of columns in the maze
+     */
+    public int getColumns() {
+        return myMaze[0].length;
+    }
 }

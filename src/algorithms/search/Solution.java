@@ -8,18 +8,28 @@ public class Solution {
 
     private ArrayList<AState> states;
 
+    /**
+     * A constructor
+     * @param path is the path solution
+     */
     public Solution(Stack<AState> path)
     {
         this.states = new ArrayList<>();
         this.setStates(path);
     }
 
+    /**
+     * @param arrayList is a stuck with the states in the s
+     */
     public void setStates(Stack<AState> arrayList){
         while (!arrayList.isEmpty())
-        this.states.add(arrayList.pop());
+            this.states.add(arrayList.pop());
     }
 
 
+    /**
+     * @return an arrayList of the path
+     */
     public ArrayList<AState> getSolutionPath(){
         return states;
     }
