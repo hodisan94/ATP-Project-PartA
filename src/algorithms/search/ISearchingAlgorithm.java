@@ -2,7 +2,7 @@ package algorithms.search;
 
 public interface ISearchingAlgorithm {
 
-    public Solution solve(ISearchable is);
+    public Solution solve(ISearchable is) throws Exception;
 
     public int getNumberOfNodesEvaluated();
 

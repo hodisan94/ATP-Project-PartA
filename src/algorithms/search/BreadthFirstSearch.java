@@ -37,7 +37,10 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
      * @param state is the element to add to the openList
      */
     @Override
-    public void addToOpenList(AState state) {
+    public void addToOpenList(AState state) throws Exception {
+        if (state == null)
+            throw new IllegalArgumentException("State cannot be null");
+
         openList.add(state);
     }
 

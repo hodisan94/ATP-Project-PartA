@@ -17,6 +17,7 @@ public class Maze3D {
      * @param cols is the number of the maze columns
      */
     public Maze3D(int depth , int rows , int cols) {
+
         Map = new int[depth][rows][cols];
     }
 

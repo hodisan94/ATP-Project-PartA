@@ -1,5 +1,6 @@
 package algorithms.search;
 
+import java.security.InvalidParameterException;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
@@ -46,7 +47,9 @@ public class BestFirstSearch extends BreadthFirstSearch {
      * @param state is the element to add to the openList
      */
     @Override
-    public void addToOpenList(AState state) {
+    public void addToOpenList(AState state) throws Exception {
+        if (state == null)
+            throw new IllegalArgumentException("State cannot be null");
         openList.add(state);
     }
 

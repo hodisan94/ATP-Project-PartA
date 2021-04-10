@@ -15,6 +15,8 @@ public class Maze {
      * @param cols is the number of the maze columns
      */
     public Maze(int rows, int cols) {
+        if (rows < 2 || cols < 2)
+            throw new IllegalArgumentException("The maze cannot be smaller than 2*2");
         myMaze = new int[rows][cols];
     }
 

@@ -24,15 +24,10 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
      * @param is is the searchable object
      * @return the solution of the searchable object
      */
-    public Solution solve(ISearchable is) {
+    public Solution solve(ISearchable is) throws Exception {
 
-        /*if(is == null)
-            try {
-                throw new Exception("ISearchable cannot be null");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
-
+        if(is == null)
+            throw new IllegalArgumentException("ISearchable cannot be null");
 
         start = is.getStartState();
         goal = is.getGoalState();
@@ -88,7 +83,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
      * An abstract method that adds a new element to openList
      * @param state is the element to add to the openList
      */
-    public abstract void addToOpenList (AState state);
+    public abstract void addToOpenList (AState state) throws Exception;
 
 
     /**

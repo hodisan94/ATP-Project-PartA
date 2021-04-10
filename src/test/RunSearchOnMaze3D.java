@@ -9,7 +9,7 @@ import algorithms.search.*;
 import java.util.ArrayList;
 
 public class RunSearchOnMaze3D {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         IMaze3DGenerator mg = new MyMaze3DGenerator();
         Maze3D maze = mg.generate(50, 50,50);
         SearchableMaze3D searchableMaze = new SearchableMaze3D(maze);
@@ -17,7 +17,7 @@ public class RunSearchOnMaze3D {
         solveProblem(searchableMaze, new DepthFirstSearch());
         solveProblem(searchableMaze, new BestFirstSearch());
     }
-    private static void solveProblem(ISearchable domain, ISearchingAlgorithm searcher) {
+    private static void solveProblem(ISearchable domain, ISearchingAlgorithm searcher) throws Exception {
         //Solve a searching problem with a searcher
         long startTime = System.currentTimeMillis();
         Solution solution = searcher.solve(domain);
