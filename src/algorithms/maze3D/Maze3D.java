@@ -94,7 +94,7 @@ public class Maze3D {
         for (d = 0 ; d< Map.length ; d++)
         {
             int i;
-            for (i = 0 ; i < Map[0][0].length ; i++){ // First row
+            for (i = 0 ; i < Map[0][0].length-1 ; i++){ // First row
                 position3DList.add(new Position3D(d , 0 ,i));
             }
             for (i = 1 ; i < Map[0].length ; i++){ // First column
@@ -106,7 +106,7 @@ public class Maze3D {
             }
 
             for (i = 1 ; i < Map[0].length-1; i++){ // Last column
-                position3DList.add(new Position3D(d, Map[0][0].length-1 , i));
+                position3DList.add(new Position3D(d,i, Map[0][0].length-1));
             }
         }
 
