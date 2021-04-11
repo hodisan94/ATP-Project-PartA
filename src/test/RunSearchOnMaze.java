@@ -11,14 +11,14 @@ public class RunSearchOnMaze {
         IMazeGenerator mg = new MyMazeGenerator();
         Maze maze = mg.generate(1000, 1000);
         SearchableMaze searchableMaze = new SearchableMaze(maze);
-        //solveProblem(searchableMaze, new BreadthFirstSearch());
+        solveProblem(searchableMaze, new BreadthFirstSearch());
         solveProblem(searchableMaze, new DepthFirstSearch());
-        //solveProblem(searchableMaze, new BestFirstSearch());
+        solveProblem(searchableMaze, new BestFirstSearch());
     }
     private static void solveProblem(ISearchable domain, ISearchingAlgorithm searcher) throws Exception {
         //Solve a searching problem with a searcher
         long startTime = System.currentTimeMillis();
-        Solution solution = searcher.solve(null);
+        Solution solution = searcher.solve(domain);
         long stopTime = System.currentTimeMillis();
 
 

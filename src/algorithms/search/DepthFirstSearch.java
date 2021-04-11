@@ -1,12 +1,14 @@
 package algorithms.search;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class DepthFirstSearch extends ASearchingAlgorithm {
 
     public DepthFirstSearch() {
         name = "DepthFirstSearch";
-        openList = new Stack<>();
+        openList = new ArrayDeque<>();
     }
 
     @Override
@@ -16,14 +18,18 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
 
     @Override
     public AState removeFromOpenList() {
-        return ((Stack<AState>)openList).pop();
+        //AState aState = ((ArrayList<AState>)openList).get(0);
+        return  ((ArrayDeque<AState>)openList).pop();
+        //return aState;
+        //return ((Stack<AState>)openList).pop();
     }
 
     @Override
     public void addToOpenList(AState state) {
         if (state == null)
             throw new IllegalArgumentException("State cannot be null");
-        ((Stack<AState>)openList).push(state);
+        ((ArrayDeque<AState>)openList).push(state);
+        //((Stack<AState>)openList).push(state);
     }
 
 

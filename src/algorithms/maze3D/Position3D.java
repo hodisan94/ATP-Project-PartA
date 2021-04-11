@@ -74,7 +74,7 @@ public class Position3D {
         if(obj instanceof Position3D)
         {
             Position3D pobj = (Position3D)obj;
-            if(this.getDepthIndex() == pobj.DepthIndex && this.getRowIndex() == pobj.getRowIndex() && this.getColumnIndex() == pobj.getColumnIndex())
+            if(this.getDepthIndex() == pobj.DepthIndex && this.getRowIndex() == pobj.RowIndex && this.getColumnIndex() == pobj.ColumnIndex)
                 return true;
         }
         return false;
