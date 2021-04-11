@@ -6,9 +6,9 @@ import java.util.Random;
 
 public class Maze3D {
 
-    private Position3D StartPosition;
-    private Position3D GoalPosition;
-    private int[][][] Map;
+    private Position3D startPosition;
+    private Position3D goalPosition;
+    private int[][][] map;
 
     /**
      * This function is the maze3D's constructor
@@ -20,28 +20,28 @@ public class Maze3D {
         if (depth < 2 || rows < 2 || cols < 2)
             throw new IllegalArgumentException("The maze3D cannot be smaller than 2*2*2");
 
-        Map = new int[depth][rows][cols];
+        map = new int[depth][rows][cols];
     }
 
     /**
      * @return the start position3D of the maze
      */
     public Position3D getStartPosition() {
-        return StartPosition;
+        return startPosition;
     }
 
     /**
      * @return the goal position3D of the maze
      */
     public Position3D getGoalPosition() {
-        return GoalPosition;
+        return goalPosition;
     }
 
     /**
      * @return the maze3D
      */
     public int[][][] getMap() {
-        return Map;
+        return map;
     }
 
     /**
@@ -53,7 +53,7 @@ public class Maze3D {
      */
     public boolean in_bound3D(int d , int r , int c)
     {
-        if (d < 0 || r < 0 || c < 0 || d > Map.length -1  || r > Map[0].length -1 || c > Map[0][0].length -1  )
+        if (d < 0 || r < 0 || c < 0 || d > map.length -1  || r > map[0].length -1 || c > map[0][0].length -1  )
             return false;
         return true;
     }
@@ -66,7 +66,7 @@ public class Maze3D {
      * @param c is the column position3D
      */
     public void setMazeBlockZero3D(int d ,int r , int c){
-        Map[d][r][c] = 0;
+        map[d][r][c] = 0;
     }
 
     /**
@@ -78,41 +78,41 @@ public class Maze3D {
             throw new IllegalArgumentException("The value to set to cannot be 0");*/
 
 
-        for (int d= 0  ; d < Map.length ; d++)
+        for (int d= 0  ; d < map.length ; d++)
         {
-            for (int r=0 ; r< Map[0].length; r++)
+            for (int r=0 ; r< map[0].length; r++)
             {
-                for (int c = 0 ; c < Map[0][0].length ; c++ )
+                for (int c = 0 ; c < map[0][0].length ; c++ )
                 {
-                    Map[d][r][c] = x;
+                    map[d][r][c] = x;
                 }
             }
         }
 
         List<Position3D> position3DList = new ArrayList<>();
         int d;
-        for (d = 0 ; d< Map.length ; d++)
+        for (d = 0 ; d< map.length ; d++)
         {
             int i;
-            for (i = 0 ; i < Map[0][0].length-1 ; i++){ // First row
+            for (i = 0 ; i < map[0][0].length-1 ; i++){ // First row
                 position3DList.add(new Position3D(d , 0 ,i));
             }
-            for (i = 1 ; i < Map[0].length ; i++){ // First column
+            for (i = 1 ; i < map[0].length ; i++){ // First column
                 position3DList.add(new Position3D(d,i , 0));
             }
 
-            for (i = 1 ; i < Map[0][0].length ; i++){ // Last row
-                position3DList.add(new Position3D(d , Map[0].length-1 , i));
+            for (i = 1 ; i < map[0][0].length ; i++){ // Last row
+                position3DList.add(new Position3D(d , map[0].length-1 , i));
             }
 
-            for (i = 1 ; i < Map[0].length-1; i++){ // Last column
-                position3DList.add(new Position3D(d,i, Map[0][0].length-1));
+            for (i = 1 ; i < map[0].length-1; i++){ // Last column
+                position3DList.add(new Position3D(d,i, map[0][0].length-1));
             }
         }
 
         Random rd = new Random();
         int start = rd.nextInt(position3DList.size());
-        StartPosition = position3DList.get(start);
+        startPosition = position3DList.get(start);
 
         position3DList.remove(start);
 
@@ -120,8 +120,8 @@ public class Maze3D {
         while (near_it)
         {
             int end = rd.nextInt(position3DList.size());
-            GoalPosition = position3DList.get(end);
-            if ((GoalPosition.getColumnIndex() +1 == StartPosition.getColumnIndex() && GoalPosition.getRowIndex() == StartPosition.getRowIndex() && GoalPosition.getDepthIndex() == StartPosition.getDepthIndex()) || (GoalPosition.getColumnIndex() -1 == StartPosition.getColumnIndex() && GoalPosition.getRowIndex() == StartPosition.getRowIndex() && GoalPosition.getDepthIndex() == StartPosition.getDepthIndex())||(GoalPosition.getColumnIndex()  == StartPosition.getColumnIndex() && GoalPosition.getRowIndex()+1 == StartPosition.getRowIndex() && GoalPosition.getDepthIndex() == StartPosition.getDepthIndex()) ||(GoalPosition.getColumnIndex()  == StartPosition.getColumnIndex() && GoalPosition.getRowIndex() -1 == StartPosition.getRowIndex() && GoalPosition.getDepthIndex() == StartPosition.getDepthIndex()) || (GoalPosition.getColumnIndex()  == StartPosition.getColumnIndex() && GoalPosition.getRowIndex() == StartPosition.getRowIndex() && GoalPosition.getDepthIndex() + 1  == StartPosition.getDepthIndex()) || (GoalPosition.getColumnIndex()  == StartPosition.getColumnIndex() && GoalPosition.getRowIndex() == StartPosition.getRowIndex() && GoalPosition.getDepthIndex() -1 == StartPosition.getDepthIndex()) ||(GoalPosition.getColumnIndex()  == StartPosition.getColumnIndex() && GoalPosition.getRowIndex() == StartPosition.getRowIndex() && GoalPosition.getDepthIndex()  == StartPosition.getDepthIndex()) )
+            goalPosition = position3DList.get(end);
+            if ((goalPosition.getColumnIndex() +1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex() -1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex())||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex()+1 == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) ||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() -1 == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() + 1  == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() -1 == startPosition.getDepthIndex()) ||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex()  == startPosition.getDepthIndex()) )
                 near_it = true;
             else
                 near_it = false;
@@ -134,21 +134,21 @@ public class Maze3D {
      * @return the number of rows in the maze3D
      */
     public int getRows(){
-        return this.Map[0].length;
+        return this.map[0].length;
     }
 
     /**
      * @return the number of columns in the maze3D
      */
     public int getColumns(){
-        return this.Map[0][0].length;
+        return this.map[0][0].length;
     }
 
     /**
      * @return the number of depth in the maze3D
      */
     public int getDepth(){
-        return this.Map.length;
+        return this.map.length;
     }
 
     /**
@@ -156,32 +156,59 @@ public class Maze3D {
      * 0 is for pass way
      * 1 is for a wall
      */
-    public void print() {
-        int depth = this.Map.length;
-        int rows = this.Map[0].length;
-        int cols = this.Map[0][0].length;
+/*    public void print() {
+        int depth = this.map.length;
+        int rows = this.map[0].length;
+        int cols = this.map[0][0].length;
         System.out.println("{");
         for (int d = 0; d < depth; d++) {
             for (int r = 0; r < rows; r++) {
                 System.out.print("{ ");
                 for (int c = 0; c < cols; c++) {
-                    if (this.StartPosition.getDepthIndex() == d && this.StartPosition.getRowIndex() == r && this.StartPosition.getColumnIndex() == c)
+                    if (this.startPosition.getDepthIndex() == d && this.startPosition.getRowIndex() == r && this.startPosition.getColumnIndex() == c)
                         System.out.print("S ");
-                    else if (this.GoalPosition.getDepthIndex() == d && this.GoalPosition.getRowIndex() == r && this.GoalPosition.getColumnIndex() == c)
+                    else if (this.goalPosition.getDepthIndex() == d && this.goalPosition.getRowIndex() == r && this.goalPosition.getColumnIndex() == c)
                         System.out.print("E ");
                     else
-                        System.out.print(this.Map[d][r][c] + " ");
+                        System.out.print(this.map[d][r][c] + " ");
                 }
                 System.out.println("}");
 
             }
             if (d != depth-1) {
-                for (int i = 0; i < (Map[0][0].length + 2) * 2 - 1; i++) {
+                for (int i = 0; i < (map[0][0].length + 2) * 2 - 1; i++) {
                     System.out.print("-");
                 }
                 System.out.println();
             }
 
+        }
+        System.out.println("}");
+    }*/
+
+    public void print(){
+        System.out.println("{");
+        for(int depth = 0; depth < map.length; depth++){
+            for(int row = 0; row < map[0].length; row++) {
+                System.out.print("{ ");
+                for (int col = 0; col < map[0][0].length; col++) {
+                    if (depth == startPosition.getDepthIndex() && row == startPosition.getRowIndex() && col == startPosition.getColumnIndex()) // if the position is the start - mark with S
+                        System.out.print("S ");
+                    else {
+                        if (depth == goalPosition.getDepthIndex() && row == goalPosition.getRowIndex() && col == goalPosition.getColumnIndex()) // if the position is the goal - mark with E
+                            System.out.print("E ");
+                        else
+                            System.out.print(map[depth][row][col] + " ");
+                    }
+                }
+                System.out.println("}");
+            }
+            if(depth < map.length - 1) {
+                System.out.print("---");
+                for (int i = 0; i < map[0][0].length; i++)
+                    System.out.print("--");
+                System.out.println();
+            }
         }
         System.out.println("}");
     }
