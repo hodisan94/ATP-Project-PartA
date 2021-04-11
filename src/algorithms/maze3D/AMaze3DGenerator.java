@@ -13,6 +13,8 @@ public abstract class AMaze3DGenerator implements IMaze3DGenerator{
      */
     @Override
     public long measureAlgorithmTimeMillis(int depth, int row, int column) {
+        if (depth < 2 || row < 2 || column < 2)
+            throw new IllegalArgumentException("The maze3D cannot be smaller than 2*2*2");
         long startTime = System.currentTimeMillis();
         generate(depth,row,column);
         long stopTime = System.currentTimeMillis();

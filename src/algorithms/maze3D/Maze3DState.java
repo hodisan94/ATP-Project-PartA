@@ -13,6 +13,8 @@ public class Maze3DState extends AState {
      */
     public Maze3DState(int stepCost, Position3D position) {
         super(stepCost);
+        if ( position == null)
+            throw new IllegalArgumentException("The position cannot be null");
         this.position = position;
     }
 
@@ -21,6 +23,8 @@ public class Maze3DState extends AState {
      * @param position
      */
     public Maze3DState(Position3D position) {
+        if ( position == null)
+            throw new IllegalArgumentException("The position cannot be null");
         this.position = position;
     }
 

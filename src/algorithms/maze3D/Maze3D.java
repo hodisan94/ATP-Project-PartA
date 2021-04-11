@@ -17,6 +17,8 @@ public class Maze3D {
      * @param cols is the number of the maze columns
      */
     public Maze3D(int depth , int rows , int cols) {
+        if (depth < 2 || rows < 2 || cols < 2)
+            throw new IllegalArgumentException("The maze3D cannot be smaller than 2*2*2");
 
         Map = new int[depth][rows][cols];
     }
@@ -72,6 +74,9 @@ public class Maze3D {
      * @param x is the value to which the maze3D values are changed
      */
     public void setMyMaze3D(int x){
+        /*if ( x == null)
+            throw new IllegalArgumentException("The value to set to cannot be 0");*/
+
 
         for (int d= 0  ; d < Map.length ; d++)
         {

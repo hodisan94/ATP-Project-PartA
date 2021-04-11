@@ -11,6 +11,8 @@ public abstract class AMazeGenerator implements IMazeGenerator{
      */
     @Override
     public long measureAlgorithmTimeMillis(int rows, int cols) {
+        if ( rows < 2 || cols < 2)
+            throw new IllegalArgumentException("The maze cannot be smaller than 2*2");
         long startTime = System.currentTimeMillis();
         generate(rows,cols);
         long stopTime = System.currentTimeMillis();

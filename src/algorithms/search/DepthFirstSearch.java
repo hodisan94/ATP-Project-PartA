@@ -21,6 +21,8 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
 
     @Override
     public void addToOpenList(AState state) {
+        if (state == null)
+            throw new IllegalArgumentException("State cannot be null");
         ((Stack<AState>)openList).push(state);
     }
 
