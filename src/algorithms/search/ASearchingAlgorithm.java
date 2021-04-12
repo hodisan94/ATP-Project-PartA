@@ -49,7 +49,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
                 if (visited.contains(neighbor))
                     continue;
 
-                if (!openList.contains(neighbor)) {
+                if (!openList.contains(neighbor)  ){//.contains(neighbor)) {
                     stepsMap.put(neighbor, nextState);
                     addToOpenList(neighbor);
                 }

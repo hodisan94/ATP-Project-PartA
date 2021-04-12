@@ -119,12 +119,39 @@ public class Maze3D {
         boolean near_it = true;
         while (near_it)
         {
-            int end = rd.nextInt(position3DList.size());
-            goalPosition = position3DList.get(end);
-            if ((goalPosition.getColumnIndex() +1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex() -1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex())||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex()+1 == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) ||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() -1 == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() + 1  == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() -1 == startPosition.getDepthIndex()) ||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex()  == startPosition.getDepthIndex()) )
-                near_it = true;
+            if (map.length > 2 )
+            {
+                int end = rd.nextInt(position3DList.size());
+                goalPosition = position3DList.get(end);
+                if (((goalPosition.getColumnIndex() +1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex() -1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex())||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex()+1 == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) ||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() -1 == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() + 1  == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() -1 == startPosition.getDepthIndex()) ||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex()  == startPosition.getDepthIndex())) || (goalPosition.getDepthIndex() - startPosition.getDepthIndex()) % 2 != 0 )
+                {
+                    //if ((goalPosition.getDepthIndex() - startPosition.getDepthIndex()) % 2 != 0 )
+                    near_it = true;
+                    position3DList.remove(end);
+/*                else
+                    near_it = false;*/
+                }
+
+                else
+                    near_it = false;
+            }
             else
-                near_it = false;
+            {
+                int end = rd.nextInt(position3DList.size());
+                goalPosition = position3DList.get(end);
+                if (((goalPosition.getColumnIndex() +1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex() -1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex())||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex()+1 == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) ||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() -1 == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() + 1  == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() -1 == startPosition.getDepthIndex()) ||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex()  == startPosition.getDepthIndex()))  )
+                {
+                    //if ((goalPosition.getDepthIndex() - startPosition.getDepthIndex()) % 2 != 0 )
+                    near_it = true;
+                    //position3DList.remove(end);
+/*                else
+                    near_it = false;*/
+                }
+
+                else
+                    near_it = false;
+            }
+
 
         }
 

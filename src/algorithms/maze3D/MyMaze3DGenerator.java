@@ -21,108 +21,154 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
 
         myList.add(initail_cell);
 
-        while (!myList.isEmpty())
-        {
+        while (!myList.isEmpty()) {
             Random rd = new Random();
             int rdNeighbour = rd.nextInt(myList.size());
             Position3D current = myList.get(rdNeighbour);
             myList.remove(rdNeighbour);
-            if(myMaze.in_bound3D(current.getDepthIndex(),current.getRowIndex()+2,current.getColumnIndex())) {
-                if (myMaze.getMap()[current.getDepthIndex()][current.getRowIndex()+2][current.getColumnIndex()] != 0) {
+            if (myMaze.in_bound3D(current.getDepthIndex(), current.getRowIndex() + 2, current.getColumnIndex())) {
+                if (myMaze.getMap()[current.getDepthIndex()][current.getRowIndex() + 2][current.getColumnIndex()] != 0) {
 
-                    myMaze.setMazeBlockZero3D(current.getDepthIndex(),current.getRowIndex()+1,current.getColumnIndex());
-                    myMaze.setMazeBlockZero3D(current.getDepthIndex(),current.getRowIndex()+2,current.getColumnIndex());
+                    myMaze.setMazeBlockZero3D(current.getDepthIndex(), current.getRowIndex() + 1, current.getColumnIndex());
+                    myMaze.setMazeBlockZero3D(current.getDepthIndex(), current.getRowIndex() + 2, current.getColumnIndex());
 
-                    Position3D neighbour = new Position3D(current.getDepthIndex(),current.getRowIndex()+2,current.getColumnIndex());
+                    Position3D neighbour = new Position3D(current.getDepthIndex(), current.getRowIndex() + 2, current.getColumnIndex());
 
-                    if (!myList.contains(neighbour)){
+                    if (!myList.contains(neighbour)) {
                         myList.add(neighbour);
                     }
                 }
             }
 
-            if(myMaze.in_bound3D(current.getDepthIndex(),current.getRowIndex()-2,current.getColumnIndex())) {
-                if (myMaze.getMap()[current.getDepthIndex()][current.getRowIndex()-2][current.getColumnIndex()] != 0) {
+            if (myMaze.in_bound3D(current.getDepthIndex(), current.getRowIndex() - 2, current.getColumnIndex())) {
+                if (myMaze.getMap()[current.getDepthIndex()][current.getRowIndex() - 2][current.getColumnIndex()] != 0) {
 
-                    myMaze.setMazeBlockZero3D(current.getDepthIndex(),current.getRowIndex()-1,current.getColumnIndex());
-                    myMaze.setMazeBlockZero3D(current.getDepthIndex(),current.getRowIndex()-2,current.getColumnIndex());
+                    myMaze.setMazeBlockZero3D(current.getDepthIndex(), current.getRowIndex() - 1, current.getColumnIndex());
+                    myMaze.setMazeBlockZero3D(current.getDepthIndex(), current.getRowIndex() - 2, current.getColumnIndex());
 
-                    Position3D neighbour = new Position3D(current.getDepthIndex(),current.getRowIndex()-2,current.getColumnIndex());
+                    Position3D neighbour = new Position3D(current.getDepthIndex(), current.getRowIndex() - 2, current.getColumnIndex());
 
-                    if (!myList.contains(neighbour)){
+                    if (!myList.contains(neighbour)) {
                         myList.add(neighbour);
                     }
                 }
             }
 
-            if(myMaze.in_bound3D(current.getDepthIndex(),current.getRowIndex(),current.getColumnIndex()+2)) {
-                if (myMaze.getMap()[current.getDepthIndex()][current.getRowIndex()][current.getColumnIndex()+2] != 0) {
+            if (myMaze.in_bound3D(current.getDepthIndex(), current.getRowIndex(), current.getColumnIndex() + 2)) {
+                if (myMaze.getMap()[current.getDepthIndex()][current.getRowIndex()][current.getColumnIndex() + 2] != 0) {
 
-                    myMaze.setMazeBlockZero3D(current.getDepthIndex(),current.getRowIndex(),current.getColumnIndex()+1);
-                    myMaze.setMazeBlockZero3D(current.getDepthIndex(),current.getRowIndex(),current.getColumnIndex()+2);
+                    myMaze.setMazeBlockZero3D(current.getDepthIndex(), current.getRowIndex(), current.getColumnIndex() + 1);
+                    myMaze.setMazeBlockZero3D(current.getDepthIndex(), current.getRowIndex(), current.getColumnIndex() + 2);
 
-                    Position3D neighbour = new Position3D(current.getDepthIndex(),current.getRowIndex(),current.getColumnIndex()+2);
+                    Position3D neighbour = new Position3D(current.getDepthIndex(), current.getRowIndex(), current.getColumnIndex() + 2);
 
-                    if (!myList.contains(neighbour)){
+                    if (!myList.contains(neighbour)) {
                         myList.add(neighbour);
                     }
                 }
             }
 
-            if(myMaze.in_bound3D(current.getDepthIndex(),current.getRowIndex(),current.getColumnIndex()-2)) {
-                if (myMaze.getMap()[current.getDepthIndex()][current.getRowIndex()][current.getColumnIndex()-2] != 0) {
+            if (myMaze.in_bound3D(current.getDepthIndex(), current.getRowIndex(), current.getColumnIndex() - 2)) {
+                if (myMaze.getMap()[current.getDepthIndex()][current.getRowIndex()][current.getColumnIndex() - 2] != 0) {
 
-                    myMaze.setMazeBlockZero3D(current.getDepthIndex(),current.getRowIndex(),current.getColumnIndex()-1);
-                    myMaze.setMazeBlockZero3D(current.getDepthIndex(),current.getRowIndex(),current.getColumnIndex()-2);
+                    myMaze.setMazeBlockZero3D(current.getDepthIndex(), current.getRowIndex(), current.getColumnIndex() - 1);
+                    myMaze.setMazeBlockZero3D(current.getDepthIndex(), current.getRowIndex(), current.getColumnIndex() - 2);
 
-                    Position3D neighbour = new Position3D(current.getDepthIndex(),current.getRowIndex(),current.getColumnIndex()-2);
+                    Position3D neighbour = new Position3D(current.getDepthIndex(), current.getRowIndex(), current.getColumnIndex() - 2);
 
-                    if (!myList.contains(neighbour)){
+                    if (!myList.contains(neighbour)) {
                         myList.add(neighbour);
                     }
                 }
             }
 
-            if(myMaze.in_bound3D(current.getDepthIndex()+1,current.getRowIndex(),current.getColumnIndex())) {
-                if (myMaze.getMap()[current.getDepthIndex()+1][current.getRowIndex()][current.getColumnIndex()] != 0) {
+            if (myMaze.in_bound3D(current.getDepthIndex() + 2, current.getRowIndex(), current.getColumnIndex())) {
+                if (myMaze.getMap()[current.getDepthIndex() + 2][current.getRowIndex()][current.getColumnIndex()] != 0) {
 
-                    myMaze.setMazeBlockZero3D(current.getDepthIndex()+1,current.getRowIndex(),current.getColumnIndex());
+                    myMaze.setMazeBlockZero3D(current.getDepthIndex() + 1, current.getRowIndex(), current.getColumnIndex());
+                    myMaze.setMazeBlockZero3D(current.getDepthIndex() + 2, current.getRowIndex(), current.getColumnIndex());
 
-                    Position3D neighbour = new Position3D(current.getDepthIndex()+1,current.getRowIndex(),current.getColumnIndex());
+                    Position3D neighbour = new Position3D(current.getDepthIndex() + 2, current.getRowIndex(), current.getColumnIndex());
 
-                    if (!myList.contains(neighbour)){
+                    if (!myList.contains(neighbour)) {
                         myList.add(neighbour);
                     }
                 }
             }
+/*            else if (myMaze.in_bound3D(current.getDepthIndex() + 1, current.getRowIndex(), current.getColumnIndex())) {
+                if (myMaze.getMap()[current.getDepthIndex() + 1][current.getRowIndex()][current.getColumnIndex()] != 0) {
 
-            if(myMaze.in_bound3D(current.getDepthIndex()-1,current.getRowIndex(),current.getColumnIndex())) {
-                if (myMaze.getMap()[current.getDepthIndex()-1][current.getRowIndex()][current.getColumnIndex()] != 0) {
+                    myMaze.setMazeBlockZero3D(current.getDepthIndex() + 1, current.getRowIndex(), current.getColumnIndex());
+                    Position3D neighbour = new Position3D(current.getDepthIndex() + 1, current.getRowIndex(), current.getColumnIndex());
 
-                    myMaze.setMazeBlockZero3D(current.getDepthIndex()-1,current.getRowIndex(),current.getColumnIndex());
+                    if (!myList.contains(neighbour)) {
+                        myList.add(neighbour);
+                    }
+                }
+            }*/
 
-                    Position3D neighbour = new Position3D(current.getDepthIndex()-1,current.getRowIndex(),current.getColumnIndex());
+            if (myMaze.in_bound3D(current.getDepthIndex() - 2, current.getRowIndex(), current.getColumnIndex())) {
+                if (myMaze.getMap()[current.getDepthIndex() - 2][current.getRowIndex()][current.getColumnIndex()] != 0) {
 
-                    if (!myList.contains(neighbour)){
+                    myMaze.setMazeBlockZero3D(current.getDepthIndex() - 1, current.getRowIndex(), current.getColumnIndex());
+                    myMaze.setMazeBlockZero3D(current.getDepthIndex() - 2, current.getRowIndex(), current.getColumnIndex());
+
+                    Position3D neighbour = new Position3D(current.getDepthIndex() - 2, current.getRowIndex(), current.getColumnIndex());
+
+                    if (!myList.contains(neighbour)) {
                         myList.add(neighbour);
                     }
                 }
             }
+/*            else if (myMaze.in_bound3D(current.getDepthIndex() - 1, current.getRowIndex(), current.getColumnIndex())) {
+                if (myMaze.getMap()[current.getDepthIndex() - 1][current.getRowIndex()][current.getColumnIndex()] != 0) {
 
-            if ((myMaze.getRows() < 3 || myMaze.getColumns() <=3)) {
+                    myMaze.setMazeBlockZero3D(current.getDepthIndex() - 1, current.getRowIndex(), current.getColumnIndex());
+
+                    Position3D neighbour = new Position3D(current.getDepthIndex() - 1, current.getRowIndex(), current.getColumnIndex());
+
+                    if (!myList.contains(neighbour)) {
+                        myList.add(neighbour);
+                    }
+                }
+            }*/
+        }
+
+            if ((myMaze.getRows() <= 3 || myMaze.getColumns() <= 3 || myMaze.getDepth() <=3 )) {
                 myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex());
 
                 if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex())))
                     myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex());
 
-                if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex())))
+                else if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex())))
                     myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex());
 
                 if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()+1)))
                     myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()+1);
 
-                if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()-1)))
+                else if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()-1)))
                     myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()-1);
+
+                if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex()+1,myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex())))
+                    myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex()+1,myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex());
+
+                else if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex()-1,myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex())))
+                    myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex()-1,myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex());
+                if ((myMaze.getRows() < 3 || myMaze.getColumns() < 3 || myMaze.getDepth() <3 )) {
+                    if (myMaze.in_bound3D(myMaze.getStartPosition().getDepthIndex()-1,myMaze.getStartPosition().getRowIndex(),myMaze.getStartPosition().getColumnIndex()))
+                        myMaze.setMazeBlockZero3D(myMaze.getStartPosition().getDepthIndex()-1,myMaze.getStartPosition().getRowIndex(),myMaze.getStartPosition().getColumnIndex());
+                    else if (myMaze.in_bound3D(myMaze.getStartPosition().getDepthIndex()+1,myMaze.getStartPosition().getRowIndex(),myMaze.getStartPosition().getColumnIndex()))
+                        myMaze.setMazeBlockZero3D(myMaze.getStartPosition().getDepthIndex()+1,myMaze.getStartPosition().getRowIndex(),myMaze.getStartPosition().getColumnIndex());
+                    else if (myMaze.in_bound3D(myMaze.getStartPosition().getDepthIndex(),myMaze.getStartPosition().getRowIndex()+1,myMaze.getStartPosition().getColumnIndex()))
+                        myMaze.setMazeBlockZero3D(myMaze.getStartPosition().getDepthIndex(),myMaze.getStartPosition().getRowIndex()+1,myMaze.getStartPosition().getColumnIndex());
+                    else if (myMaze.in_bound3D(myMaze.getStartPosition().getDepthIndex()+1,myMaze.getStartPosition().getRowIndex()-1,myMaze.getStartPosition().getColumnIndex()))
+                        myMaze.setMazeBlockZero3D(myMaze.getStartPosition().getDepthIndex()+1,myMaze.getStartPosition().getRowIndex()-1,myMaze.getStartPosition().getColumnIndex());
+                    else if (myMaze.in_bound3D(myMaze.getStartPosition().getDepthIndex()+1,myMaze.getStartPosition().getRowIndex(),myMaze.getStartPosition().getColumnIndex()+1))
+                        myMaze.setMazeBlockZero3D(myMaze.getStartPosition().getDepthIndex()+1,myMaze.getStartPosition().getRowIndex(),myMaze.getStartPosition().getColumnIndex()+1);
+                    else if (myMaze.in_bound3D(myMaze.getStartPosition().getDepthIndex()+1,myMaze.getStartPosition().getRowIndex(),myMaze.getStartPosition().getColumnIndex()-1))
+                        myMaze.setMazeBlockZero3D(myMaze.getStartPosition().getDepthIndex()+1,myMaze.getStartPosition().getRowIndex(),myMaze.getStartPosition().getColumnIndex()-1);
+                }
+
             }
 
             if (myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()][myMaze.getGoalPosition().getRowIndex()][myMaze.getGoalPosition().getColumnIndex()]==1) {
@@ -131,41 +177,42 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
                 if (myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex()+1,myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()))
                     myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex()+1,myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex());
 
-                 if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex()-1,myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex())))
+                else if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex()-1,myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex())))
                     myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex()-1,myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex());
 
-                 if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex())))
+                if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex())))
                     myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex());
 
-                 if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex())))
+                else if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex())))
                     myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex());
 
-                 if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()+1)))
+                if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()+1)))
                     myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()+1);
 
-                 if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()-1)))
+                else if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()-1)))
                     myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()-1);
 
                 else {
+                    // else ifim
                     if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex()-1) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()][myMaze.getGoalPosition().getRowIndex()-1][myMaze.getGoalPosition().getColumnIndex()-1]==0)||(myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex()-1) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()][myMaze.getGoalPosition().getRowIndex()+1][myMaze.getGoalPosition().getColumnIndex()-1]==0)) {
                         myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()-1);
                     }
 
-                    else if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex()+1) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()][myMaze.getGoalPosition().getRowIndex()-1][myMaze.getGoalPosition().getColumnIndex()+1]==0)||(myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex()+1) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()][myMaze.getGoalPosition().getRowIndex()+1][myMaze.getGoalPosition().getColumnIndex()+1]==0)) {
+                      else if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex()+1) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()][myMaze.getGoalPosition().getRowIndex()-1][myMaze.getGoalPosition().getColumnIndex()+1]==0)||(myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex()+1) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()][myMaze.getGoalPosition().getRowIndex()+1][myMaze.getGoalPosition().getColumnIndex()+1]==0)) {
                         myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()+1);
                     }
 
-                    else if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex()+1,myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex()) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()+1][myMaze.getGoalPosition().getRowIndex()-1][myMaze.getGoalPosition().getColumnIndex()]==0)||(myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex()+1,myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex()) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()+1][myMaze.getGoalPosition().getRowIndex()+1][myMaze.getGoalPosition().getColumnIndex()]==0)) {
+                      else if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex()+1,myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex()) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()+1][myMaze.getGoalPosition().getRowIndex()-1][myMaze.getGoalPosition().getColumnIndex()]==0)||(myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex()+1,myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex()) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()+1][myMaze.getGoalPosition().getRowIndex()+1][myMaze.getGoalPosition().getColumnIndex()]==0)) {
                         myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex()+1,myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex());
                     }
 
-                    else if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex()-1,myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex()) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()-1][myMaze.getGoalPosition().getRowIndex()-1][myMaze.getGoalPosition().getColumnIndex()]==0)||(myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex()-1,myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex()) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()-1][myMaze.getGoalPosition().getRowIndex()+1][myMaze.getGoalPosition().getColumnIndex()]==0)) {
+                      else if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex()-1,myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex()) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()-1][myMaze.getGoalPosition().getRowIndex()-1][myMaze.getGoalPosition().getColumnIndex()]==0)||(myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex()-1,myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex()) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()-1][myMaze.getGoalPosition().getRowIndex()+1][myMaze.getGoalPosition().getColumnIndex()]==0)) {
                         myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex()-1,myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex());
                     }
                 }
             }
-        }
-       // myMaze.print();
+
+        //myMaze.print();
         return myMaze;
     }
 }

@@ -19,7 +19,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
     @Override
     public AState removeFromOpenList() {
         //AState aState = ((ArrayList<AState>)openList).get(0);
-        return  ((ArrayDeque<AState>)openList).pop();
+        return  ((ArrayDeque<AState>)openList).removeFirst();
         //return aState;
         //return ((Stack<AState>)openList).pop();
     }
@@ -28,7 +28,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
     public void addToOpenList(AState state) {
         if (state == null)
             throw new IllegalArgumentException("State cannot be null");
-        ((ArrayDeque<AState>)openList).push(state);
+        ((ArrayDeque<AState>)openList).addFirst(state);
         //((Stack<AState>)openList).push(state);
     }
 
