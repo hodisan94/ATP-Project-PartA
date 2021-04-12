@@ -212,7 +212,7 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
                 }
             }
 
-        //myMaze.print();
+        myMaze.print();
         return myMaze;
     }
 }

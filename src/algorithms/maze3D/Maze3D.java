@@ -97,15 +97,15 @@ public class Maze3D {
             for (i = 0 ; i < map[0][0].length-1 ; i++){ // First row
                 position3DList.add(new Position3D(d , 0 ,i));
             }
-            for (i = 1 ; i < map[0].length ; i++){ // First column
+            for (i = 0 ; i < map[0].length ; i++){ // First column
                 position3DList.add(new Position3D(d,i , 0));
             }
 
-            for (i = 1 ; i < map[0][0].length ; i++){ // Last row
+            for (i = 0 ; i < map[0][0].length ; i++){ // Last row
                 position3DList.add(new Position3D(d , map[0].length-1 , i));
             }
 
-            for (i = 1 ; i < map[0].length-1; i++){ // Last column
+            for (i = 0 ; i < map[0].length-1; i++){ // Last column
                 position3DList.add(new Position3D(d,i, map[0][0].length-1));
             }
         }
@@ -127,7 +127,7 @@ public class Maze3D {
                 {
                     //if ((goalPosition.getDepthIndex() - startPosition.getDepthIndex()) % 2 != 0 )
                     near_it = true;
-                    position3DList.remove(end);
+                    //position3DList.remove(end);
 /*                else
                     near_it = false;*/
                 }
