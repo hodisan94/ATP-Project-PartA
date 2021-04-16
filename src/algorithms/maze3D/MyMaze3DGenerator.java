@@ -1,7 +1,5 @@
 package algorithms.maze3D;
 
-import algorithms.mazeGenerators.Maze;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -96,7 +94,6 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
                 }
             }
 
-
             if (myMaze.in_bound3D(current.getDepthIndex() - 2, current.getRowIndex(), current.getColumnIndex())) {
                 if (myMaze.getMap()[current.getDepthIndex() - 2][current.getRowIndex()][current.getColumnIndex()] != 0) {
 
@@ -110,7 +107,6 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
                     }
                 }
             }
-
         }
 
             if ((myMaze.getRows() <= 3 || myMaze.getColumns() <= 3 || myMaze.getDepth() <=3 )) {
@@ -197,6 +193,7 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
                     myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()-1);
 
                 else {
+                    // else ifim
                     if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex()-1) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()][myMaze.getGoalPosition().getRowIndex()-1][myMaze.getGoalPosition().getColumnIndex()-1]==0)||(myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex()-1) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()][myMaze.getGoalPosition().getRowIndex()+1][myMaze.getGoalPosition().getColumnIndex()-1]==0)) {
                         myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()-1);
                     }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class RunSearchOnMaze3D {
     public static void main(String[] args) throws Exception {
         IMaze3DGenerator mg = new MyMaze3DGenerator();
-            Maze3D maze = mg.generate(100,100 ,100);
+            Maze3D maze = mg.generate(2,10 ,10);
         SearchableMaze3D searchableMaze = new SearchableMaze3D(maze);
         solveProblem(searchableMaze, new BreadthFirstSearch());
         solveProblem(searchableMaze, new DepthFirstSearch());
@@ -19,9 +19,9 @@ public class RunSearchOnMaze3D {
     }
     private static void solveProblem(ISearchable domain, ISearchingAlgorithm searcher) throws Exception {
         //Solve a searching problem with a searcher
-        long startTime = System.currentTimeMillis();
+        //long startTime = System.currentTimeMillis();
         Solution solution = searcher.solve(domain);
-        long stopTime = System.currentTimeMillis();
+        //long stopTime = System.currentTimeMillis();
 
 
         System.out.println(String.format("'%s' algorithm - nodes evaluated: %s", searcher.getName(), searcher.getNumberOfNodesEvaluated()));
@@ -32,6 +32,6 @@ public class RunSearchOnMaze3D {
         for (int i = 0; i < solutionPath.size(); i++) {
             System.out.println(String.format("%s. %s",i,solutionPath.get(i)));
         }
-        System.out.println(stopTime-startTime);
+        //System.out.println(stopTime-startTime);
     }
 }

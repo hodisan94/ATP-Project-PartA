@@ -1,6 +1,5 @@
 package algorithms.search;
 
-import java.security.InvalidParameterException;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
