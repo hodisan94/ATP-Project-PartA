@@ -114,7 +114,6 @@ public class Main {
         }
         return testStatus;
     }
-    //</editor-fold>
 
     public static void appendToResultsFile(String text) {
         try (java.io.FileWriter fw = new java.io.FileWriter(m_resultsFileName, true)) {

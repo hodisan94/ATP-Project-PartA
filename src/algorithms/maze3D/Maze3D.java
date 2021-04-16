@@ -74,8 +74,6 @@ public class Maze3D {
      * @param x is the value to which the maze3D values are changed
      */
     public void setMyMaze3D(int x){
-        /*if ( x == null)
-            throw new IllegalArgumentException("The value to set to cannot be 0");*/
 
 
         for (int d= 0  ; d < map.length ; d++)
@@ -125,11 +123,8 @@ public class Maze3D {
                 goalPosition = position3DList.get(end);
                 if (((goalPosition.getColumnIndex() +1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex() -1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex())||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex()+1 == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) ||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() -1 == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() + 1  == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() -1 == startPosition.getDepthIndex()) ||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex()  == startPosition.getDepthIndex())) || (goalPosition.getDepthIndex() - startPosition.getDepthIndex()) % 2 != 0 )
                 {
-                    //if ((goalPosition.getDepthIndex() - startPosition.getDepthIndex()) % 2 != 0 )
                     near_it = true;
-                    //position3DList.remove(end);
-/*                else
-                    near_it = false;*/
+
                 }
 
                 else
@@ -141,11 +136,8 @@ public class Maze3D {
                 goalPosition = position3DList.get(end);
                 if (((goalPosition.getColumnIndex() +1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex() -1 == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex())||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex()+1 == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) ||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() -1 == startPosition.getRowIndex() && goalPosition.getDepthIndex() == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() + 1  == startPosition.getDepthIndex()) || (goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex() -1 == startPosition.getDepthIndex()) ||(goalPosition.getColumnIndex()  == startPosition.getColumnIndex() && goalPosition.getRowIndex() == startPosition.getRowIndex() && goalPosition.getDepthIndex()  == startPosition.getDepthIndex()))  )
                 {
-                    //if ((goalPosition.getDepthIndex() - startPosition.getDepthIndex()) % 2 != 0 )
                     near_it = true;
-                    //position3DList.remove(end);
-/*                else
-                    near_it = false;*/
+
                 }
 
                 else
@@ -183,35 +175,7 @@ public class Maze3D {
      * 0 is for pass way
      * 1 is for a wall
      */
-/*    public void print() {
-        int depth = this.map.length;
-        int rows = this.map[0].length;
-        int cols = this.map[0][0].length;
-        System.out.println("{");
-        for (int d = 0; d < depth; d++) {
-            for (int r = 0; r < rows; r++) {
-                System.out.print("{ ");
-                for (int c = 0; c < cols; c++) {
-                    if (this.startPosition.getDepthIndex() == d && this.startPosition.getRowIndex() == r && this.startPosition.getColumnIndex() == c)
-                        System.out.print("S ");
-                    else if (this.goalPosition.getDepthIndex() == d && this.goalPosition.getRowIndex() == r && this.goalPosition.getColumnIndex() == c)
-                        System.out.print("E ");
-                    else
-                        System.out.print(this.map[d][r][c] + " ");
-                }
-                System.out.println("}");
 
-            }
-            if (d != depth-1) {
-                for (int i = 0; i < (map[0][0].length + 2) * 2 - 1; i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
-            }
-
-        }
-        System.out.println("}");
-    }*/
 
     public void print(){
         System.out.println("{");

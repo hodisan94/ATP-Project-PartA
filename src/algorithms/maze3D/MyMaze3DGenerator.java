@@ -95,17 +95,7 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
                     }
                 }
             }
-/*            else if (myMaze.in_bound3D(current.getDepthIndex() + 1, current.getRowIndex(), current.getColumnIndex())) {
-                if (myMaze.getMap()[current.getDepthIndex() + 1][current.getRowIndex()][current.getColumnIndex()] != 0) {
 
-                    myMaze.setMazeBlockZero3D(current.getDepthIndex() + 1, current.getRowIndex(), current.getColumnIndex());
-                    Position3D neighbour = new Position3D(current.getDepthIndex() + 1, current.getRowIndex(), current.getColumnIndex());
-
-                    if (!myList.contains(neighbour)) {
-                        myList.add(neighbour);
-                    }
-                }
-            }*/
 
             if (myMaze.in_bound3D(current.getDepthIndex() - 2, current.getRowIndex(), current.getColumnIndex())) {
                 if (myMaze.getMap()[current.getDepthIndex() - 2][current.getRowIndex()][current.getColumnIndex()] != 0) {
@@ -120,18 +110,7 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
                     }
                 }
             }
-/*            else if (myMaze.in_bound3D(current.getDepthIndex() - 1, current.getRowIndex(), current.getColumnIndex())) {
-                if (myMaze.getMap()[current.getDepthIndex() - 1][current.getRowIndex()][current.getColumnIndex()] != 0) {
 
-                    myMaze.setMazeBlockZero3D(current.getDepthIndex() - 1, current.getRowIndex(), current.getColumnIndex());
-
-                    Position3D neighbour = new Position3D(current.getDepthIndex() - 1, current.getRowIndex(), current.getColumnIndex());
-
-                    if (!myList.contains(neighbour)) {
-                        myList.add(neighbour);
-                    }
-                }
-            }*/
         }
 
             if ((myMaze.getRows() <= 3 || myMaze.getColumns() <= 3 || myMaze.getDepth() <=3 )) {
@@ -218,7 +197,6 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
                     myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()-1);
 
                 else {
-                    // else ifim
                     if ((myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()-1,myMaze.getGoalPosition().getColumnIndex()-1) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()][myMaze.getGoalPosition().getRowIndex()-1][myMaze.getGoalPosition().getColumnIndex()-1]==0)||(myMaze.in_bound3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex()+1,myMaze.getGoalPosition().getColumnIndex()-1) && myMaze.getMap()[myMaze.getGoalPosition().getDepthIndex()][myMaze.getGoalPosition().getRowIndex()+1][myMaze.getGoalPosition().getColumnIndex()-1]==0)) {
                         myMaze.setMazeBlockZero3D(myMaze.getGoalPosition().getDepthIndex(),myMaze.getGoalPosition().getRowIndex(),myMaze.getGoalPosition().getColumnIndex()-1);
                     }
@@ -239,7 +217,6 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
                 }
             }
 
-        myMaze.print();
         return myMaze;
     }
 }

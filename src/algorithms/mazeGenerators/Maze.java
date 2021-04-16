@@ -95,7 +95,7 @@ public class Maze {
      * " " is for pass way
      * # is for a wall
      */
-    public void printMaze()
+    public void printMaze() // for fun
     {
         int rows = this.myMaze.length;
         int cols  = this.myMaze[0].length;
