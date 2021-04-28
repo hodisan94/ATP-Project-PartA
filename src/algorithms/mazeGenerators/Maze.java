@@ -1,5 +1,6 @@
 package algorithms.mazeGenerators;
 
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -139,6 +140,29 @@ public class Maze {
             }
             System.out.println("}");
         }
+    }
+
+
+    public byte[] toByteArray(){
+        byte[] b = new byte[6+(this.getRows()*this.getColumns())];
+        int rows = this.getRows();
+        int cols = this.getColumns();
+        Position start = new Position(this.getStartPosition());
+        Position goal = new Position(this.getGoalPosition());
+        b[0] = (byte)rows;
+        b[1] = (byte)cols;
+        b[2] = (byte)start.getRowIndex();
+        b[3] = (byte)start.getColumnIndex();
+        b[4] = (byte)goal.getRowIndex();
+        b[5] = (byte)goal.getColumnIndex();
+        int counter = 6;
+        for (int i = 0 ; i < this.getRows(); i ++){
+            for(int j = 0 ; j < this.getColumns(); j++) {
+                b[counter] = (byte)this.myMaze[i][j];
+            }
+        }
+        return b;
+
     }
 
 
