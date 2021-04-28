@@ -144,24 +144,62 @@ public class Maze {
 
 
     public byte[] toByteArray(){
-        byte[] b = new byte[6+(this.getRows()*this.getColumns())];
+        byte[] b ;
+        ByteBuffer buffer = ByteBuffer.allocate(Integer.BYTES*(6+(this.getRows()*this.getColumns())));
         int rows = this.getRows();
         int cols = this.getColumns();
         Position start = new Position(this.getStartPosition());
         Position goal = new Position(this.getGoalPosition());
-        b[0] = (byte)rows;
+        buffer.putInt(rows);
+        buffer.putInt(cols);
+        buffer.putInt(start.getRowIndex());
+        buffer.putInt(start.getColumnIndex());
+        buffer.putInt(goal.getRowIndex());
+        buffer.putInt(goal.getColumnIndex());
+/*        b[0] = (byte)rows;
         b[1] = (byte)cols;
         b[2] = (byte)start.getRowIndex();
         b[3] = (byte)start.getColumnIndex();
         b[4] = (byte)goal.getRowIndex();
         b[5] = (byte)goal.getColumnIndex();
-        int counter = 6;
+        int counter = 6;*/
         for (int i = 0 ; i < this.getRows(); i ++){
             for(int j = 0 ; j < this.getColumns(); j++) {
-                b[counter] = (byte)this.myMaze[i][j];
+                buffer.putInt(this.myMaze[i][j]);
             }
         }
+        b = buffer.array();
         return b;
+
+    }
+
+    public Maze(byte[] b){
+
+        ByteBuffer bb = ByteBuffer.allocate(b.length);
+        for(int i = 0 ; i< b.length ; i ++){
+            bb.put(b[i]);
+        }
+        bb.rewind();
+
+
+        int rows = bb.getInt();
+        int cols = bb.getInt();
+        int start_row = bb.getInt();
+        int start_col  = bb.getInt();
+        int goal_row = bb.getInt();
+        int goal_col = bb.getInt();
+
+        this.myMaze = new int[rows][cols];
+        this.startPosition = new Position(start_row,start_col);
+        this.goalPosition = new Position(goal_row ,goal_col);
+
+
+        for(int s = 0 ; s< this.myMaze.length; s++){
+            for (int e = 0 ; e<this.myMaze[0].length;e++){
+                this.myMaze[s][e] = bb.getInt();
+            }
+        }
+
 
     }
 
