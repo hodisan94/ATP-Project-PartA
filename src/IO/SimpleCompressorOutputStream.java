@@ -26,6 +26,8 @@ public class SimpleCompressorOutputStream  extends OutputStream {
         int oneCounter = 0;
         int zeroCounter = 0;
 
+        byte bbb = (byte) 255;
+
         if (b.length % 4 != 0 || b.length < 24)
             try {
                 throw new Exception("Can't create the maze...");
@@ -40,7 +42,7 @@ public class SimpleCompressorOutputStream  extends OutputStream {
         for (int i = 4 ; i<=24 ; i+=4){
             bb.put(b[i-1]); // now we have the rows the cols the start pos and goal pos
         }
-        if (b[27] == (byte) 0x00)
+        if (b[27] == (byte) 0x00) // if 0 is the first
         {
             bb.put((byte) 0x00);
             zeroCounter++;
@@ -86,7 +88,7 @@ public class SimpleCompressorOutputStream  extends OutputStream {
             }
         }
 
-        else {
+        else { // zero is not the first. so the first is 1.
             bb.put((byte) 0x01);
             oneCounter++;
 
