@@ -3,6 +3,7 @@ package IO;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
+import java.util.Arrays;
 
 public class SimpleCompressorOutputStream  extends OutputStream {
 
@@ -26,7 +27,15 @@ public class SimpleCompressorOutputStream  extends OutputStream {
         int oneCounter = 0;
         int zeroCounter = 0;
 
+        byte s = 1;
+
         byte bbb = (byte) 255;
+
+        byte sd = (byte) 256;
+        byte sd1 = (byte) 128;
+        byte sd2 = (byte) 129;
+        byte sd3 = (byte) 130;
+        byte sd4 = (byte) 131;
 
         if (b.length % 4 != 0 || b.length < 24)
             try {
@@ -40,8 +49,16 @@ public class SimpleCompressorOutputStream  extends OutputStream {
 
         ByteBuffer bb = ByteBuffer.allocate(b.length/4);
         for (int i = 4 ; i<=24 ; i+=4){
+            if (b[i-2] != 0 ){
+                bb.put(b[i-2]);
+            }
+            else{
+                bb.put((byte) 0x00);
+
+            }
             bb.put(b[i-1]); // now we have the rows the cols the start pos and goal pos
         }
+
         if (b[27] == (byte) 0x00) // if 0 is the first
         {
             bb.put((byte) 0x00);
@@ -132,7 +149,11 @@ public class SimpleCompressorOutputStream  extends OutputStream {
                 }
 
             }
+
         }
+        int pos = bb.position();
+        byte[] compress =  Arrays.copyOfRange(bb.array(),0,pos);
+        out.write(compress);
 
 
 
