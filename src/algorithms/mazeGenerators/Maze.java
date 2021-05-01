@@ -143,11 +143,12 @@ public class Maze {
     }
 
 
-    public byte[] toByteArray(){
-        byte[] b ;
-        ByteBuffer buffer = ByteBuffer.allocate(Integer.BYTES*(6+(this.getRows()*this.getColumns())));
+    public byte[] toByteArray() {
+        byte[] b;
+        ByteBuffer buffer = ByteBuffer.allocate(Integer.BYTES * (6 + (this.getRows() * this.getColumns())));
         int rows = this.getRows();
         int cols = this.getColumns();
+
         Position start = new Position(this.getStartPosition());
         Position goal = new Position(this.getGoalPosition());
         buffer.putInt(rows);
@@ -161,8 +162,10 @@ public class Maze {
         b[2] = (byte)start.getRowIndex();
         b[3] = (byte)start.getColumnIndex();
         b[4] = (byte)goal.getRowIndex();
-        b[5] = (byte)goal.getColumnIndex();
-        int counter = 6;*/
+        b[5] = (byte)goal.getColumnIndex();*/
+
+        int counter = 6;
+
         for (int i = 0 ; i < this.getRows(); i ++){
             for(int j = 0 ; j < this.getColumns(); j++) {
                 buffer.putInt(this.myMaze[i][j]);
@@ -172,6 +175,30 @@ public class Maze {
         return b;
 
     }
+
+    /*public byte[] toByteArray(){
+
+        byte[] b = new byte[6 + (this.getRows()*this.getColumns())];
+
+        int rows = this.getRows();
+        int cols = this.getColumns();
+
+        int x_start = startPosition.getRowIndex();
+        int y_start = startPosition.getColumnIndex();
+
+        int x_goal = goalPosition.getRowIndex();
+        int y_goal = goalPosition.getColumnIndex();
+
+        b[0] = (byte) rows;
+        b[1] = (byte) cols;
+        b[2] = (byte) x_start;
+        b[3] = (byte) y_start;
+        b[4] = (byte) x_goal;
+        b[5] = (byte) y_goal;
+
+
+
+    }*/
 
     public Maze(byte[] b){
 
@@ -200,8 +227,8 @@ public class Maze {
             }
         }
 
-
     }
+
 
 // hodisan was here
     /**
