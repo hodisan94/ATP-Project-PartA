@@ -33,8 +33,8 @@ public class SimpleCompressorOutputStream  extends OutputStream {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-        byte tempbyte = 0x00;
-        byte[] tempbytes = {(byte) 0x80, (byte) 0x40, (byte) 0x20 , (byte)  0x10, (byte) 0x08 , (byte)  0x04 , (byte) 0x02, (byte) 0x01};
+        byte tempbyte = 0x00; //just for testing..not using it
+        byte[] tempbytes = {(byte) 0x80, (byte) 0x40, (byte) 0x20 , (byte)  0x10, (byte) 0x08 , (byte)  0x04 , (byte) 0x02, (byte) 0x01}; // just for testing ..not using it
 
         ByteBuffer bb = ByteBuffer.allocate(b.length/4);
         for (int i = 4 ; i<=24 ; i+=4){
