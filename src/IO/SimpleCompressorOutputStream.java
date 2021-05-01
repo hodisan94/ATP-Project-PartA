@@ -38,7 +38,7 @@ public class SimpleCompressorOutputStream  extends OutputStream {
 
         ByteBuffer bb = ByteBuffer.allocate(b.length/4);
         for (int i = 4 ; i<=24 ; i+=4){
-            bb.put(b[i]); // now we have the rows the cols the start pos and goal pos
+            bb.put(b[i-1]); // now we have the rows the cols the start pos and goal pos
         }
         if (b[27] == (byte) 0x00)
         {
