@@ -27,12 +27,12 @@ public class SimpleCompressorOutputStream  extends OutputStream {
         int oneCounter = 0;
         int zeroCounter = 0;
 
-        byte s = 1;
+/*        byte s = 1;
 
-        /*byte bbb = (byte) 255;
+        byte bbb = (byte) 255;
 
-        byte sd = (byte) 256;
-        byte sd1 = (byte) 128;
+        byte sd = (byte) 257;
+        byte s  d1 = (byte) 128;
         byte sd2 = (byte) 129;
         byte sd3 = (byte) 130;
         byte sd4 = (byte) 131;*/
@@ -77,17 +77,18 @@ public class SimpleCompressorOutputStream  extends OutputStream {
             for (int j = 32; j < (b.length + 4); j += 4) {
                 if (b[j - 1] == (byte) 0x00) {
                     if (oneCounter > 0) {
-                        if (oneCounter >= 255) {
+                        while (oneCounter >= 255) {
                             bb.put((byte) 255);
                             bb.put((byte) 0x00);
                             oneCounter = oneCounter - 255;
-                            bb.put((byte) oneCounter);
-                            oneCounter = 0;
-                        } else {
+                        }
+                        bb.put((byte) oneCounter);
+                        oneCounter = 0;
+                        /*} else {
                             bb.put((byte) oneCounter);
                             oneCounter = 0;
 
-                        }
+                        }*/
                     }
 
                     zeroCounter++;
@@ -95,18 +96,19 @@ public class SimpleCompressorOutputStream  extends OutputStream {
                 }
                 if (b[j - 1] == (byte) 0x01) {
                     if (zeroCounter > 0) {
-                        if (zeroCounter >= 255) {
+                        while (zeroCounter >= 255) {
                             bb.put((byte) 255);
                             bb.put((byte) 0x00);
                             zeroCounter = zeroCounter - 255;
-                            bb.put((byte) zeroCounter);
-                            zeroCounter = 0;
-
-                        } else {
-                            bb.put((byte) zeroCounter);
-                            zeroCounter = 0;
-
                         }
+                        bb.put((byte) zeroCounter);
+                        zeroCounter = 0;
+
+                        /*} else {
+                            bb.put((byte) zeroCounter);
+                            zeroCounter = 0;
+
+                        }*/
                     }
                     oneCounter++;
                 }
@@ -119,35 +121,37 @@ public class SimpleCompressorOutputStream  extends OutputStream {
             for (int j = 32; j < (b.length + 4); j += 4) {
                 if (b[j - 1] == (byte) 0x00) {
                     if (oneCounter > 0) {
-                        if (oneCounter >= 255) {
+                        while (oneCounter >= 255) {
                             bb.put((byte) 255);
                             bb.put((byte) 0x00);
                             oneCounter = oneCounter - 255;
-                            bb.put((byte) oneCounter);
-                            oneCounter = 0;
-                        } else {
+                        }
+                        bb.put((byte) oneCounter);
+                        oneCounter = 0;
+                       /* } else {
                             bb.put((byte) oneCounter);
                             oneCounter = 0;
 
-                        }
+                        }*/
                     }
                     zeroCounter++;
                     //byte temp = b[j];
                 }
                 if (b[j - 1] == (byte) 0x01) {
                     if (zeroCounter > 0) {
-                        if (zeroCounter >= 255) {
+                        while (zeroCounter >= 255) {
                             bb.put((byte) 255);
                             bb.put((byte) 0x00);
                             zeroCounter = zeroCounter - 255;
-                            bb.put((byte) zeroCounter);
-                            zeroCounter = 0;
-
-                        } else {
-                            bb.put((byte) zeroCounter);
-                            zeroCounter = 0;
-
                         }
+                        bb.put((byte) zeroCounter);
+                        zeroCounter = 0;
+
+                        /*} else {
+                            bb.put((byte) zeroCounter);
+                            zeroCounter = 0;
+
+                        }*/
                     }
                     oneCounter++;
                 }
@@ -156,31 +160,33 @@ public class SimpleCompressorOutputStream  extends OutputStream {
 
         }
         if (zeroCounter > 0) {
-            if (zeroCounter >= 255) {
+            while (zeroCounter >= 255) {
                 bb.put((byte) 255);
                 bb.put((byte) 0x00);
                 zeroCounter = zeroCounter - 255;
-                bb.put((byte) zeroCounter);
-                //zeroCounter = 0;
-
-            } else {
-                bb.put((byte) zeroCounter);
-                //zeroCounter = 0;
-
             }
+            bb.put((byte) zeroCounter);
+                //zeroCounter = 0;
+
+            /*} else {
+                bb.put((byte) zeroCounter);
+                //zeroCounter = 0;
+
+            }*/
         }
         else if (oneCounter > 0) {
-            if (oneCounter >= 255) {
+            while (oneCounter >= 255) {
                 bb.put((byte) 255);
                 bb.put((byte) 0x00);
                 oneCounter = oneCounter - 255;
-                bb.put((byte) oneCounter);
+            }
+            bb.put((byte) oneCounter);
                 //oneCounter = 0;
-            } else {
+            /*} else {
                 bb.put((byte) oneCounter);
                 //oneCounter = 0;
 
-            }
+            }*/
         }
         //System.out.println(b.length);
         int pos = bb.position();
