@@ -37,24 +37,47 @@ public class RunCompressDecompressMaze {
         boolean areMazesEquals = Arrays.equals(loadedMaze.toByteArray(),maze.toByteArray());
         System.out.println(String.format("Mazes equal: %s",areMazesEquals));//maze should be equal to loadedMaze
 
-        /*byte[] b = maze.toByteArray();
-        byte[] loaded = loadedMaze.toByteArray();
 
-        if(b.length != loaded.length)
-            System.out.println("length diff");
-        else{
-            for (int i = 0; i < b.length; i++){
-                if(b[i] != loaded[i]) {
-                    System.out.println(i);
-                    System.out.println("length = " + b.length);
-                    System.out.println("b = " + b[i] + " loaded = " + loaded[i]);
-                    break;
-                }
+        try {
+            // save maze to a file
+            OutputStream out = new MyCompressorOutputStream(new FileOutputStream(mazeFileName));
+            out.write(maze.toByteArray());
+            out.flush();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            //read maze from file
+            InputStream in = new MyDecompressorInputStream(new
+                    FileInputStream(mazeFileName));
+            savedMazeBytes = new byte[maze.toByteArray().length];
+            in.read(savedMazeBytes);
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        loadedMaze = new Maze(savedMazeBytes);
+        areMazesEquals = Arrays.equals(loadedMaze.toByteArray(),maze.toByteArray());
+        System.out.println(String.format("Mazes equal: %s",areMazesEquals));
+
+        byte[] b = loadedMaze.toByteArray();
+        byte[] c = maze.toByteArray();
+
+
+        for (int i = 0; i < b.length; i++ ){
+            if(b[i] != c[i]){
+                System.out.println("loadMaze");
+                loadedMaze.print();
+                System.out.println("maze");
+                maze.print();
+                System.out.println(i);
+                break;
             }
-        }*/
 
-
-
+        }
 
 
     }

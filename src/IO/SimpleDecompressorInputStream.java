@@ -52,20 +52,26 @@ public class SimpleDecompressorInputStream  extends InputStream {
                     if(isZero == true) {
                         b[counter - 1] = 0x00;
                         counter++;
+
                         b[counter - 1] = 0x00;
                         counter++;
+
                         b[counter - 1] = 0x00;
                         counter++;
+
                         b[counter - 1] = 0x00;
                         counter++;
                     }
                     else {
                         b[counter - 1] = 0x00;
                         counter++;
+
                         b[counter - 1] = 0x00;
                         counter++;
+
                         b[counter - 1] = 0x00;
                         counter++;
+
                         b[counter - 1] = 0x01;
                         counter++;
                     }
@@ -74,7 +80,6 @@ public class SimpleDecompressorInputStream  extends InputStream {
             }
             read = in.read();
         }
-
 
         return in.read(b);
     }
