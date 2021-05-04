@@ -223,8 +223,9 @@ public class MyDecompressorInputStream extends InputStream {
 
 
 
+        return in.read(b);
 
-        return 0;
+        //return 0;
     }
 }
 
