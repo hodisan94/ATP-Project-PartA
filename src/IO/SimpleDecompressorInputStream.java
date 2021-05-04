@@ -72,10 +72,12 @@ public class SimpleDecompressorInputStream  extends InputStream {
                 }
                 isZero = !isZero;
             }
+
             read = in.read();
         }
 
 
         return in.read(b);
     }
+    //push
 }
