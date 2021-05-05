@@ -157,12 +157,7 @@ public class Maze {
         buffer.putInt(start.getColumnIndex());
         buffer.putInt(goal.getRowIndex());
         buffer.putInt(goal.getColumnIndex());
-/*        b[0] = (byte)rows;
-        b[1] = (byte)cols;
-        b[2] = (byte)start.getRowIndex();
-        b[3] = (byte)start.getColumnIndex();
-        b[4] = (byte)goal.getRowIndex();
-        b[5] = (byte)goal.getColumnIndex();*/
+
 
         int counter = 6;
 
@@ -176,29 +171,7 @@ public class Maze {
 
     }
 
-    /*public byte[] toByteArray(){
 
-        byte[] b = new byte[6 + (this.getRows()*this.getColumns())];
-
-        int rows = this.getRows();
-        int cols = this.getColumns();
-
-        int x_start = startPosition.getRowIndex();
-        int y_start = startPosition.getColumnIndex();
-
-        int x_goal = goalPosition.getRowIndex();
-        int y_goal = goalPosition.getColumnIndex();
-
-        b[0] = (byte) rows;
-        b[1] = (byte) cols;
-        b[2] = (byte) x_start;
-        b[3] = (byte) y_start;
-        b[4] = (byte) x_goal;
-        b[5] = (byte) y_goal;
-
-
-
-    }*/
 
     public Maze(byte[] b){
 

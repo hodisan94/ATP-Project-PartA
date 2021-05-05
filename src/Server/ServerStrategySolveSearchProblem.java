@@ -2,7 +2,12 @@ package Server;
 
 import algorithms.mazeGenerators.Maze;
 import algorithms.search.ASearchingAlgorithm;
+import algorithms.search.ISearchable;
+import algorithms.search.ISearchingAlgorithm;
+import algorithms.search.SearchableMaze;
 import algorithms.search.Solution;
+import algorithms.search.*;
+
 
 import java.io.*;
 
@@ -27,7 +32,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             ObjectInputStream fromClient = new ObjectInputStream(inFromClient);
 
             try {
-                Maze myMaze = (Maze) fromClient.readObject();
+                Maze myMaze = (Maze)fromClient.readObject();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -45,18 +50,17 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
     }
 
-    public void save_sol(Maze myMaze , Solution sol , int num){
+    public void save_sol(Maze myMaze , Solution sol ){
 
-        int rows = myMaze.getRows();
-        int cols = myMaze.getColumns();
-        int start_x_pos = myMaze.getStartPosition().getRowIndex();
-        int start_y_pos = myMaze.getStartPosition().getColumnIndex();
-        int goal_x_pos = myMaze.getGoalPosition().getRowIndex();
-        int goal_y_pos = myMaze.getGoalPosition().getColumnIndex();
 
-        String Name = "sol-" + rows + "," + cols + "," + start_x_pos+ "," + start_y_pos + "," +goal_x_pos + "," + goal_y_pos + "," + num;
 
-        File solution = new File(tempDirectoryPath+" "+Name);
+        byte[] bytes = myMaze.toByteArray();
+        String solv = "solution: - ";
+        for (int i = 0 ; i < bytes.length; i++){
+            solv += bytes[i];
+            solv += ",";
+        }
+        File solution = new File(tempDirectoryPath+" "+solv );
 
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(solution));
@@ -73,15 +77,26 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
         Solution solved = null;
 
-        int rows = myMaze.getRows();
-        int cols = myMaze.getColumns();
-        int start_x_pos = myMaze.getStartPosition().getRowIndex();
-        int start_y_pos = myMaze.getStartPosition().getColumnIndex();
-        int goal_x_pos = myMaze.getGoalPosition().getRowIndex();
-        int goal_y_pos = myMaze.getGoalPosition().getColumnIndex();
+        byte[] bytes = myMaze.toByteArray();
+        String solv = "solution: - ";
+        for (int i = 0 ; i < bytes.length; i++){
+            solv += bytes[i];
+            solv += ",";
+        }
 
-        String path = this.tempDirectoryPath + "," + rows + "," + cols + "," + start_x_pos + "," + start_y_pos + "," + goal_x_pos + "," +goal_y_pos;
-        File newFile = new File(path);
+
+        File newFile = new File(this.tempDirectoryPath + " " + solv);
+        if (solved == null){
+            ISearchable iSearchable = new SearchableMaze(myMaze);
+            ASearchingAlgorithm algorithm = (ASearchingAlgorithm)algo.copyalgo();
+            try {
+                solved = algorithm.solve(iSearchable);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            save_sol(myMaze,solved);
+
+        }
 
 
 

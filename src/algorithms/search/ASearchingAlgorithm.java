@@ -85,6 +85,8 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
      */
     public abstract void addToOpenList (AState state) throws Exception;
 
+   // public abstract Object copyalgo();
+
 
     /**
      * @param goalState is the last state of the path
@@ -104,6 +106,8 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
             return new Solution(path);
 
         }
+
+
 
     }
 

@@ -43,7 +43,8 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         openList.add(state);
     }
 
-
-
-
+    @Override
+    public Object copyalgo() {
+        return new BreadthFirstSearch();
+    }
 }

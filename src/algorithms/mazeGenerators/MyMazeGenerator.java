@@ -145,4 +145,9 @@ public class MyMazeGenerator extends AMazeGenerator{
     }
 
 
+    public Object copyMaze() {
+        return new MyMazeGenerator();
+    }
+
+
 }

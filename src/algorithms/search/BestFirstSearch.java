@@ -52,4 +52,9 @@ public class BestFirstSearch extends BreadthFirstSearch {
         openList.add(state);
     }
 
+
+    @Override
+    public Object copyalgo() {
+        return new BestFirstSearch();
+    }
 }

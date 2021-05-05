@@ -8,4 +8,6 @@ public interface ISearchingAlgorithm {
 
     public String getName();
 
+    public Object copyalgo();
+
 }

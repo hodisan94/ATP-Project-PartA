@@ -35,7 +35,8 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         ((ArrayDeque<AState>)openList).addFirst(state);
     }
 
-
-
-
+    @Override
+    public Object copyalgo() {
+        return new DepthFirstSearch();
+    }
 }
