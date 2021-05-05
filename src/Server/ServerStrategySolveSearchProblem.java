@@ -100,7 +100,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
                 e.printStackTrace();
             }
 
-
+//hodisan
         }*/
         if (solved == null){
 
