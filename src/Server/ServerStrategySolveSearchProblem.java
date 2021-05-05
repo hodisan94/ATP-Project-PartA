@@ -53,8 +53,6 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
     public void save_sol(Maze myMaze , Solution sol ){
 
-
-
         byte[] bytes = myMaze.toByteArray();
         String solv = "solution: - ";
         for (int i = 0 ; i < bytes.length; i++){
