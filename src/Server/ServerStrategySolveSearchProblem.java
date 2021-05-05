@@ -35,7 +35,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             try {
                 Maze myMaze = (Maze)fromClient.readObject();
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
 
             Solution solve = null;

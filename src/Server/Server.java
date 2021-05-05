@@ -36,13 +36,14 @@ public class Server {
                 try{
                     Socket clientSocket = serverSocket.accept();
 
-                    threadPool.execute(()->{
+                    threadPool.execute(()-> {
                         handleClient(clientSocket);
                     });
 
                 }
                 catch (SocketTimeoutException e ){
-                    e.printStackTrace();
+                    System.out.println(e.getMessage());
+                    //System.out.println("Socket timeout");
                 }
 
             }
@@ -80,7 +81,7 @@ public class Server {
             clientSocket.getOutputStream().close();
             clientSocket.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
     }
