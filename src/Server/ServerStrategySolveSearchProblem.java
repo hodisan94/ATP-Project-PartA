@@ -16,12 +16,13 @@ import java.io.*;
 public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
 
-    private ASearchingAlgorithm algo;
+    public ASearchingAlgorithm algo;
     private String tempDirectoryPath;
     private static int num = 0;
 
     public ServerStrategySolveSearchProblem() {
         this.tempDirectoryPath = System.getProperty("java.io.tmpdir");
+        this.algo = new BreadthFirstSearch();
 
     }
 
@@ -32,19 +33,16 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             ObjectOutputStream toClient = new ObjectOutputStream(outToClient);
             ObjectInputStream fromClient = new ObjectInputStream(inFromClient);
 
-            try {
-                Maze myMaze = (Maze)fromClient.readObject();
-            } catch (ClassNotFoundException e) {
-                System.out.println(e.getMessage());
-            }
+            Maze myMaze = (Maze)fromClient.readObject();
 
-            Solution solve = null;
+
+            Solution solve = findOrSave(myMaze);
             toClient.writeObject(solve);
             toClient.flush();
 
 
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -53,7 +51,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
     public void save_sol(Maze myMaze , Solution sol ){
 
-        byte[] bytes = myMaze.toByteArray();
+       /* byte[] bytes = myMaze.toByteArray();
         String solv = "solution: - ";
         for (int i = 0 ; i < bytes.length; i++){
             solv += bytes[i];
@@ -67,7 +65,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             out.flush();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
 
     }
@@ -88,7 +86,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
 
         File newFile = new File(ourPath);
-        while (newFile.exists()){
+       /* while (newFile.exists()){
             try {
                 ObjectInputStream in = new ObjectInputStream(new FileInputStream(ourPath));
                 Object read = (Object)in.read();
@@ -103,7 +101,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             }
 
 
-        }
+        }*/
         if (solved == null){
 
             ISearchable iSearchable = new SearchableMaze(myMaze);

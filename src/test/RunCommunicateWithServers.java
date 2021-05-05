@@ -1,5 +1,4 @@
-/*
-
+package test;
 
 import Client.Client;
 import Client.IClientStrategy;
@@ -48,14 +47,13 @@ public class RunCommunicateWithServers {
                             try {
                                 ObjectOutputStream toServer = new ObjectOutputStream(outToServer);
                                 toServer.flush();
-                                int[] mazeDimensions = new int[]{50, 50}; toServer.writeObject(mazeDimensions); //send maze dimensions to server
+                                int[] mazeDimensions = new int[]{50, 50};
+                                toServer.writeObject(mazeDimensions); //send maze dimensions to server
                                 toServer.flush();
                                 ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
                                 byte[] compressedMaze = (byte[]) fromServer.readObject(); //read generated maze (compressed with MyCompressor) from server
                                 InputStream is = new MyDecompressorInputStream(new ByteArrayInputStream(compressedMaze));
-                                byte[] decompressedMaze = new byte[1000 */
-/*CHANGE SIZE ACCORDING TO YOU MAZE SIZE*//*
-]; //allocating byte[] for the decompressed maze -
+                                byte[] decompressedMaze = new byte[10024]; //allocating byte[] for the decompressed maze -
                                 is.read(decompressedMaze); //Fill decompressed Maze with bytes
                                 Maze maze = new Maze(decompressedMaze);
                                 maze.print();
@@ -77,12 +75,14 @@ public class RunCommunicateWithServers {
                         public void clientStrategy(InputStream inFromServer, OutputStream outToServer) {
                             try {
                                 ObjectOutputStream toServer = new ObjectOutputStream(outToServer);
-                                ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
                                 toServer.flush();
-                                MyMazeGenerator mg = new MyMazeGenerator(); Maze maze = mg.generate(50, 50);
+                                MyMazeGenerator mg = new MyMazeGenerator();
+                                Maze maze = mg.generate(50, 50);
                                 maze.print();
                                 toServer.writeObject(maze); //send maze to server
                                 toServer.flush();
+                                ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
+
                                 Solution mazeSolution = (Solution) fromServer.readObject(); //read generated maze (compressed with MyCompressor) from server
 
                                 //Print Maze Solution retrieved from the server
@@ -129,7 +129,8 @@ public class RunCommunicateWithServers {
             e.printStackTrace();
         }
     }
-}*/
+}
+/*
 package test;
 
 import Client.*;
@@ -316,7 +317,9 @@ public class RunCommunicateWithServers {
                         ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
                         byte[] compressedMaze = (byte[]) fromServer.readObject(); //read generated maze (compressed with MyCompressor) from server
                         InputStream is = new MyDecompressorInputStream(new ByteArrayInputStream(compressedMaze));
-                        byte[] decompressedMaze = new byte[1000000 /*CHANGE SIZE ACCORDING TO YOU MAZE SIZE*/]; //allocating byte[] for the decompressed maze -
+                        byte[] decompressedMaze = new byte[1000000 */
+/*CHANGE SIZE ACCORDING TO YOU MAZE SIZE*//*
+]; //allocating byte[] for the decompressed maze -
                         is.read(decompressedMaze); //Fill decompressedMaze with bytes
                         Maze maze = new Maze(decompressedMaze);
                         if (maze.toByteArray().length > 1000) {
@@ -379,4 +382,4 @@ public class RunCommunicateWithServers {
         total_pass +=  testsPassed.get();
     }
     //</editor-fold>
-}
+}*/

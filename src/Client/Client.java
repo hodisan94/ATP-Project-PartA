@@ -5,20 +5,20 @@ import java.net.Socket;
 
 public class Client {
 
-    private InetAddress setverIP;
+    private InetAddress serverIP;
     private int serverPort;
     private IClientStrategy strategy;
 
-    public Client(InetAddress setverIP, int serverPort, IClientStrategy strategy) {
-        this.setverIP = setverIP;
+    public Client(InetAddress serverIP, int serverPort, IClientStrategy strategy) {
+        this.serverIP = serverIP;
         this.serverPort = serverPort;
         this.strategy = strategy;
     }
 
     public void communicateWithServer(){
         try{
-            Socket serverSocket = new Socket(setverIP,serverPort);
-            System.out.println("Connected to server - IP + " + setverIP + ", Port = " + serverPort);
+            Socket serverSocket = new Socket(serverIP,serverPort);
+            System.out.println("Connected to server - IP + " + serverIP + ", Port = " + serverPort);
             strategy.clientStrategy(serverSocket.getInputStream(),serverSocket.getOutputStream());
             serverSocket.close();
 

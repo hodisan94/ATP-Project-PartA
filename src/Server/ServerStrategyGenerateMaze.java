@@ -24,6 +24,9 @@ public class ServerStrategyGenerateMaze implements IServerStrategy{
             ObjectOutputStream toClient = new ObjectOutputStream(outToClient);
             ObjectInputStream fromClient = new ObjectInputStream(inFromClient);
 
+            OutputStream out = new ByteArrayOutputStream();
+            MyCompressorOutputStream myCompressorOutputStream = new MyCompressorOutputStream(out);
+
             int[] arrayForMaze = (int[])fromClient.readObject();
             int rows = arrayForMaze[0];
             int cols = arrayForMaze[1];
@@ -31,12 +34,11 @@ public class ServerStrategyGenerateMaze implements IServerStrategy{
             Maze clinetMaze = aMazeGenerator.generate(rows,cols);
 
             byte[] byteMaze = clinetMaze.toByteArray();
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            //ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-            MyCompressorOutputStream myCompressorOutputStream = new MyCompressorOutputStream(byteArrayOutputStream);
 
-            myCompressorOutputStream.write(byteMaze);
-            toClient.writeObject(byteArrayOutputStream.toByteArray());
+            myCompressorOutputStream.write(clinetMaze.toByteArray());
+            toClient.writeObject(((ByteArrayOutputStream)myCompressorOutputStream.out).toByteArray());
             toClient.flush();
 
 
