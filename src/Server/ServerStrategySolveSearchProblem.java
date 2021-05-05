@@ -1,5 +1,6 @@
 package Server;
 
+import IO.MyDecompressorInputStream;
 import algorithms.mazeGenerators.Maze;
 import algorithms.search.ASearchingAlgorithm;
 import algorithms.search.ISearchable;
@@ -75,7 +76,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
     public Solution findOrSave(Maze myMaze){
 
-        Solution solved = null;
+        Object solved = null;
 
         byte[] bytes = myMaze.toByteArray();
         String solv = "solution: - ";
@@ -84,9 +85,29 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             solv += ",";
         }
 
+        String ourPath = this.tempDirectoryPath + " " + solv;
 
-        File newFile = new File(this.tempDirectoryPath + " " + solv);
+
+
+        File newFile = new File(ourPath);
+        while (newFile.exists()){
+            try {
+                ObjectInputStream in = new ObjectInputStream(new FileInputStream(ourPath));
+                Object read = (Object)in.read();
+                if (((String)read).equals(myMaze.toByteArray())) {
+                    solved = in.read();
+                    return (Solution) solved;
+                }
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
         if (solved == null){
+
             ISearchable iSearchable = new SearchableMaze(myMaze);
             ASearchingAlgorithm algorithm = (ASearchingAlgorithm)algo.copyalgo();
             try {
@@ -94,12 +115,12 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            save_sol(myMaze,solved);
+            save_sol(myMaze,(Solution) solved);
 
         }
 
 
 
-        return solved;
+        return (Solution) solved;
     }
 }
