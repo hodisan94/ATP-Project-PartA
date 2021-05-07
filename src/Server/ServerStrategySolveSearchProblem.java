@@ -136,10 +136,8 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
                 if (decompreesed_maze.equals(myMaze_byte)) {
                     ObjectInputStream input = new ObjectInputStream(new FileInputStream(tempDirectoryPath + "Solution - " + myMaze.getRows() + ", " + myMaze.getColumns() + ", "+ myMaze.getStartPosition().getRowIndex() +
                             ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex() + ", " + num));
-                    solved = (Solution)input.readObject();
+                    solved =input.readObject();
 
-
-                    //solved = in.read();
                     return (Solution) solved;
                 }
 
