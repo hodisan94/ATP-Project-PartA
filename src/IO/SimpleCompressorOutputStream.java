@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class SimpleCompressorOutputStream  extends OutputStream {
 
 
-    OutputStream out;
+    public OutputStream out;
 
     public SimpleCompressorOutputStream (OutputStream out){
         this.out = out;
