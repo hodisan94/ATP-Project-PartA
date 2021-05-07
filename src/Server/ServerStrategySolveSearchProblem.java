@@ -100,27 +100,16 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
     public Solution findOrSave(Maze myMaze){
 
         String filePath = tempDirectoryPath + "Maze - " + myMaze.getRows() + ", " + myMaze.getColumns() + ", "+ myMaze.getStartPosition().getRowIndex() +
-                ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex()+"," + num ;
+                ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex()+"," ;
 
 
         Object solved = null;
 
-        /*byte[] bytes = myMaze.toByteArray();
-        String solv = "solution: - ";
-        for (int i = 0 ; i < bytes.length; i++){
-            solv += bytes[i];
-            solv += ",";
-        }*/
-
-        //String ourPath = this.tempDirectoryPath + " " + solv;
-
-
-
-        File newFile = new File(filePath);
+        File newFile = new File(filePath + num);
 
         while (newFile.exists()){
             try {
-                InputStream in = new MyDecompressorInputStream(new FileInputStream(filePath));
+                InputStream in = new MyDecompressorInputStream(new FileInputStream(filePath + num));
                 String myMaze_byte = "";
                 String decompreesed_maze = "";
                 byte[] bytesArrayMaze = myMaze.toByteArray();
@@ -142,6 +131,8 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
                     return (Solution) solved;
                 }
+
+                newFile = new File(filePath + num);
 
 
             } catch (IOException e) {
