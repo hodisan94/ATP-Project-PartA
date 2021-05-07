@@ -30,7 +30,7 @@ public class ServerStrategyGenerateMaze implements IServerStrategy{
             int[] arrayForMaze = (int[])fromClient.readObject();
             int rows = arrayForMaze[0];
             int cols = arrayForMaze[1];
-            AMazeGenerator aMazeGenerator = new MyMazeGenerator();  // hmm??
+            AMazeGenerator aMazeGenerator = Configurations.getMazeGeneratingAlgorithm();  // hmm??
             Maze clinetMaze = aMazeGenerator.generate(rows,cols);
 
             byte[] byteMaze = clinetMaze.toByteArray();

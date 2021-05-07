@@ -23,7 +23,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
     public ServerStrategySolveSearchProblem() {
         this.tempDirectoryPath = System.getProperty("java.io.tmpdir");
-        this.algo = new BreadthFirstSearch();
+        this.algo = Configurations.getMazeSearchingAlgorithm();
 
     }
 

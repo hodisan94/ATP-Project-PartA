@@ -18,10 +18,11 @@ public class Server {
 
 
     public Server(int port, int listeningIntervalMS, IServerStrategy strategy) {
+        Configurations.getInstance();
         this.port = port;
         this.listeningIntervalMS = listeningIntervalMS;
         this.strategy = strategy;
-        this.threadPool = Executors.newFixedThreadPool(2); // just for now before part C
+        this.threadPool = Executors.newFixedThreadPool(Configurations.getThreadPoolSize());
     }
 
 

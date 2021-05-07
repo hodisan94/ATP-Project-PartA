@@ -8,6 +8,9 @@ import algorithms.search.BestFirstSearch;
 import algorithms.search.BreadthFirstSearch;
 import algorithms.search.DepthFirstSearch;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -17,10 +20,20 @@ public class Configurations {
     private static int threadPoolSize = 1; //defult;
     private static String mazeGeneratingAlgorithm;
     private static String mazeSearchingAlgorithm;
-    //private static ASearchingAlgorithm algorithm = new BreadthFirstSearch();//defult
     private static InputStream input = null;
 
     private static Configurations single_instance = null;
+
+    private Configurations(){
+        try {
+            input = new FileInputStream("C:\\ATP-Project-PartA\\resources\\config.properties");
+            properties.load(input);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public static Configurations getInstance(){
