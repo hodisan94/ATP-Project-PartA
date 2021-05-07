@@ -23,6 +23,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
     public ServerStrategySolveSearchProblem() {
         this.tempDirectoryPath = System.getProperty("java.io.tmpdir");
+        this.algo = new BreadthFirstSearch();
 
     }
 
@@ -119,16 +120,33 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
         while (newFile.exists()){
             try {
                 InputStream in = new MyDecompressorInputStream(new FileInputStream(filePath));
+                String myMaze_byte = "";
+                String decompreesed_maze = "";
                 byte[] bytesArrayMaze = myMaze.toByteArray();
                 byte[] read = new byte[bytesArrayMaze.length];
+                for (int i = 0 ; i < bytesArrayMaze.length; i++){
+                    myMaze_byte += bytesArrayMaze[i];
+                    myMaze_byte += ",";
+                }
                 in.read(read);
-                if (((String)read).equals(myMaze.toByteArray())) {
-                    solved = in.read();
+                for (int i = 0; i< read.length ;i++){
+                    decompreesed_maze += read[i];
+                    decompreesed_maze += ",";
+                }
+                if (decompreesed_maze.equals(myMaze_byte)) {
+                    ObjectInputStream input = new ObjectInputStream(new FileInputStream(tempDirectoryPath + "Solution - " + myMaze.getRows() + ", " + myMaze.getColumns() + ", "+ myMaze.getStartPosition().getRowIndex() +
+                            ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex() + ", " + num));
+                    solved = (Solution)input.readObject();
+
+
+                    //solved = in.read();
                     return (Solution) solved;
                 }
 
 
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
 
