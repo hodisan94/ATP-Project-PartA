@@ -53,7 +53,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
     public void save_sol(Maze myMaze , Solution sol ){
 
         String fileName = myMaze.getRows() + ", " + myMaze.getColumns() + ", "+ myMaze.getStartPosition().getRowIndex() +
-                ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex() + ", " + num;
+                ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex();
 
         //File dirFile = new File(tempDirectoryPath);
 
@@ -100,7 +100,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
     public Solution findOrSave(Maze myMaze){
 
         String filePath = tempDirectoryPath + "Maze - " + myMaze.getRows() + ", " + myMaze.getColumns() + ", "+ myMaze.getStartPosition().getRowIndex() +
-                ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex() + ", " + num;
+                ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex();
 
         Object solved = null;
 
@@ -135,7 +135,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
                 }
                 if (decompreesed_maze.equals(myMaze_byte)) {
                     ObjectInputStream input = new ObjectInputStream(new FileInputStream(tempDirectoryPath + "Solution - " + myMaze.getRows() + ", " + myMaze.getColumns() + ", "+ myMaze.getStartPosition().getRowIndex() +
-                            ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex() + ", " + num));
+                            ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex()));
                     solved =input.readObject();
 
                     return (Solution) solved;
