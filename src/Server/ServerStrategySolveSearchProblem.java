@@ -127,7 +127,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
                     ObjectInputStream input = new ObjectInputStream(new FileInputStream(tempDirectoryPath + "Solution - " + myMaze.getRows() + ", " + myMaze.getColumns() + ", "+ myMaze.getStartPosition().getRowIndex() +
                             ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex()+"," + num ));
                     num++;
-                    solved =input.readObject();
+                    solved = input.readObject();
 
                     return (Solution) solved;
                 }
@@ -154,8 +154,6 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             save_sol(myMaze,(Solution) solved);
 
         }
-
-
 
         return (Solution) solved;
     }

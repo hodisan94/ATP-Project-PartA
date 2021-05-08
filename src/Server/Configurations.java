@@ -46,6 +46,7 @@ public class Configurations {
     }
 
     public static ASearchingAlgorithm getMazeSearchingAlgorithm(){
+        //String maze_test = properties.getProperty("mazeGeneratingAlgorithm");
         String maze_search_name = properties.getProperty("mazeSearchingAlgorithm");
         if (maze_search_name.equals("BreadthFirstSearch")){
             return new BreadthFirstSearch();
@@ -54,7 +55,7 @@ public class Configurations {
             return new DepthFirstSearch();
         }
         else
-        return new BestFirstSearch(); // defult
+            return new BestFirstSearch(); // defult
     }
 
     public static AMazeGenerator getMazeGeneratingAlgorithm() {
