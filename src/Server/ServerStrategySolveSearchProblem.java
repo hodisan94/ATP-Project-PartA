@@ -15,6 +15,7 @@ import java.io.*;
 import java.nio.ByteBuffer;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.HashSet;
 
 
 public class ServerStrategySolveSearchProblem implements IServerStrategy{
@@ -23,7 +24,8 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
     public ASearchingAlgorithm algo;
     private String tempDirectoryPath;
     private int num = 0;
-    //private HashSet<String> map;
+    //private HashSet<String> map = new HashSet<>();
+    private HashMap<File,File> map = new HashMap<>();
 
     public ServerStrategySolveSearchProblem() {
         this.tempDirectoryPath = System.getProperty("java.io.tmpdir");
@@ -54,13 +56,15 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
     public void save_sol(Maze myMaze , Solution sol ){
 
+
+        String s = myMaze.ArrayToString(myMaze);
+
         String fileName = myMaze.getRows() + ", " + myMaze.getColumns() + ", "+ myMaze.getStartPosition().getRowIndex() +
                 ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex()+"," + num;
 
-        //File dirFile = new File(tempDirectoryPath);
-
-        File nameFileMaze = new File(tempDirectoryPath + "Maze - " + fileName);
-        File nameFileSol = new File(tempDirectoryPath + "Solution - " + fileName);
+        File nameFileMaze = new File(tempDirectoryPath + "Maze - " + s);
+        File nameFileSol = new File(tempDirectoryPath + "Solution - " + s);
+        map.put(nameFileMaze,nameFileSol);
 
         try{
             OutputStream out = new MyCompressorOutputStream(new FileOutputStream(nameFileMaze));
@@ -82,13 +86,56 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
         String filePath = tempDirectoryPath + "Maze - " + myMaze.getRows() + ", " + myMaze.getColumns() + ", "+ myMaze.getStartPosition().getRowIndex() +
                 ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex()+"," ;
-
-
+        System.out.println("la la la lal la ");
+        String s = myMaze.ArrayToString(myMaze);
         Object solved = null;
-
+        File path = new File(tempDirectoryPath+ "Maze - " + s);
         File newFile = new File(filePath + num);
+        if (!map.isEmpty()){
+            if (map.containsKey(path)){
+                try {
+                    System.out.println("im here..");
+                    InputStream in = new MyDecompressorInputStream(new FileInputStream(path));
+                    String myMaze_byte = "";
+                    String decompreesed_maze = "";
+                    byte[] bytesArrayMaze = myMaze.toByteArray();
+                    byte[] read = new byte[bytesArrayMaze.length];
+                    for (int i = 0 ; i < bytesArrayMaze.length; i++){
+                        myMaze_byte += bytesArrayMaze[i];
+                        myMaze_byte += ",";
+                    }
+                    in.read(read);
+                    for (int i = 0; i< read.length ;i++){
+                        decompreesed_maze += read[i];
+                        decompreesed_maze += ",";
+                    }
+                    if (decompreesed_maze.equals(myMaze_byte)) {
+/*                        ObjectInputStream input = new ObjectInputStream(new FileInputStream(tempDirectoryPath + "Solution - " + myMaze.getRows() + ", " + myMaze.getColumns() + ", "+ myMaze.getStartPosition().getRowIndex() +
+                                ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex()+"," + num ));*/
+                        ObjectInputStream input = new ObjectInputStream(new FileInputStream(tempDirectoryPath + "Solution - " +s));
 
-        while (newFile.exists()){
+                                num++;
+                        solved = input.readObject();
+
+                        return (Solution) solved;
+                    }
+
+                    newFile = new File(filePath + num);
+
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+
+                    return (Solution) solved;
+                }
+
+            }
+
+ /*       while (newFile.exists()){
             try {
                 InputStream in = new MyDecompressorInputStream(new FileInputStream(filePath + num));
                 String myMaze_byte = "";
@@ -122,7 +169,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
                 e.printStackTrace();
             }
 
-        }
+        }*/
         if (solved == null){
 
             ISearchable iSearchable = new SearchableMaze(myMaze);

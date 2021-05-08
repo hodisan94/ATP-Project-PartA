@@ -97,7 +97,8 @@ public class RunCommunicateWithServers {
                         }
                     });
             client.communicateWithServer();
-        } catch (UnknownHostException e) { e.printStackTrace();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
         }
     }
     private static void CommunicateWithServer_StringReverser() {
@@ -131,7 +132,7 @@ public class RunCommunicateWithServers {
     }
 
     public static void A(){
-        //CommunicateWithServer_MazeGenerating();
+        CommunicateWithServer_MazeGenerating();
         CommunicateWithServer_SolveSearchProblem();
     }
 
