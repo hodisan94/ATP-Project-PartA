@@ -38,15 +38,14 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
         String name = "Maze - ";
         for (File f: files) {
             if(f.getName().startsWith(name)) {
-                String name2 = f.getName().substring(7);
+                String name2 = "Solution - " + f.getName().substring(7);
                 for (File f2 : files) {
-                    if (f2.getName().endsWith(name2)) {
+                    if (f2.getName().equals(name2)) {
                         map.put(f, f2);
                         break;
                     }
                 }
             }
-
         }
 
     }
@@ -114,7 +113,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
         /*String filePath = tempDirectoryPath + "Maze - " + myMaze.getRows() + ", " + myMaze.getColumns() + ", "+ myMaze.getStartPosition().getRowIndex() +
                 ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex()+"," ;*/
 
-        System.out.println("la la la lal la ");
+        //System.out.println("la la la lal la ");
 
         int mazeNum = 0;
 
@@ -125,15 +124,15 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
         Object solved = null;
 
-        File mazePath = new File(tempDirectoryPath+ "Maze - " + s + ", " + mazeNum);
-        File solPath = new File(tempDirectoryPath+ "Solution - " + s + ", " + mazeNum);
+        File mazePath = new File(tempDirectoryPath+ "Maze - " + s);
+        File solPath = new File(tempDirectoryPath+ "Solution - " + s);
 
         //File newFile = new File(filePath + num);
 
         if (!map.isEmpty()){
-            if (map.containsKey(mazePath)){
+            while (map.containsKey(mazePath)){
                 try {
-                    System.out.println("im here..");
+                    //System.out.println("im here..");
 
                     InputStream in = new MyDecompressorInputStream(new FileInputStream(mazePath));
 
@@ -142,7 +141,6 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
                     byte[] read = new byte[bytesArrayMaze.length];
 
                     in.read(read);
-
 
                     if(Arrays.equals(bytesArrayMaze, read)){
                         ObjectInputStream input = new ObjectInputStream(new FileInputStream(solPath));
@@ -155,16 +153,15 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
                     mazeNum++;
 
                 } catch (IOException e) {
-                    System.out.println("line 155");
+                    //System.out.println("line 155");
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
-                    System.out.println("line 158");
+                    //System.out.println("line 158");
                     e.printStackTrace();
                 }
 
                 //return (Solution) solved;
                 }
-
 
             }
 
@@ -213,7 +210,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
                 //System.out.println("line 209");
                 e.printStackTrace();
             }
-            save_sol(myMaze,(Solution) solved, (s + mazeNum));
+            save_sol(myMaze,(Solution) solved, s);
 
         }
 
