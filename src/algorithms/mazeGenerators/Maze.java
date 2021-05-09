@@ -249,7 +249,7 @@ public class Maze implements Serializable {
         return myMaze[0].length;
     }
 
-    public String ArrayToString(Maze maze){
+    /*public String ArrayToString(Maze maze){
         String fileName = "";
 
         byte[] b = maze.toByteArray();
@@ -298,5 +298,5 @@ public class Maze implements Serializable {
         }
 
         return fileName;
-    }
+    }*/
 }

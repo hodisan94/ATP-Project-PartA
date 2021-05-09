@@ -93,7 +93,7 @@ public class Main {
     public static void main(String[] args) {
         try {
 
-            Test_CompressDecompressMaze();
+            //Test_CompressDecompressMaze();
 
             Test_CommunicateWithServers();
         }
