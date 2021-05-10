@@ -51,7 +51,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
     }
 
     @Override
-    public void serverStrategy(InputStream inFromClient, OutputStream outToClient) {
+    public void ServerStrategy(InputStream inFromClient, OutputStream outToClient) {
 
         try {
             ObjectOutputStream toClient = new ObjectOutputStream(outToClient);

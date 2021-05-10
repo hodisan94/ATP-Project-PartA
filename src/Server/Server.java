@@ -78,7 +78,7 @@ public class Server {
 
     private void handleClient(Socket clientSocket){
         try {
-            strategy.serverStrategy(clientSocket.getInputStream(),clientSocket.getOutputStream());
+            strategy.ServerStrategy(clientSocket.getInputStream(),clientSocket.getOutputStream());
             clientSocket.getInputStream().close();
             clientSocket.getOutputStream().close();
             clientSocket.close();
