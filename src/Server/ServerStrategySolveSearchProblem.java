@@ -104,7 +104,8 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
         }catch(Exception e){
             //System.out.println("line 91");
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 

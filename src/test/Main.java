@@ -1,5 +1,4 @@
 package test;
-
 import Client.*;
 import IO.MyCompressorOutputStream;
 import IO.MyDecompressorInputStream;
@@ -93,9 +92,11 @@ public class Main {
     public static void main(String[] args) {
         try {
 
-            //Test_CompressDecompressMaze();
+            Test_CompressDecompressMaze();
 
             Test_CommunicateWithServers();
+
+
         }
         catch (Exception e)
         {
@@ -104,7 +105,7 @@ public class Main {
     }
 
     //<editor-fold desc="Test_CompressDecompressMaze">
-    private static void Test_CompressDecompressMaze() {
+    private static void Test_CompressDecompressMaze() throws Exception {
         double averageCompressionRate=0;
         int size = 5;
         String mazeFileName = "savedMaze.maze";
@@ -147,7 +148,7 @@ public class Main {
     //</editor-fold>
 
     //<editor-fold desc="Test_CommunicateWithServers">
-    private static void Test_CommunicateWithServers() {
+    private static void Test_CommunicateWithServers() throws IOException {
         //Initializing servers
         int counter = 0;
         Port_ServerMazeGenerating = getRandomNumber(5000, 6000);
@@ -159,9 +160,24 @@ public class Main {
         solveSearchProblemServer.start();
         mazeGeneratingServer.start();
 
-        CommunicateWithServer_MazeGenerating(counter);
-        CommunicateWithServer_SolveSearchProblem(counter);
+        //CommunicateWithServer_MazeGenerating(counter);
 
+        Thread[] threads = new Thread[6];
+        for (int i= 0; i< threads.length ; i++) {
+            threads[i] = new Thread(()->{
+                CommunicateWithServer_MazeGenerating(10);
+                //CommunicateWithServer_SolveSearchProblem(10);
+            });
+            threads[i].start();
+        }
+//
+        for (int i = 0; i <threads.length ; i++) {
+            try{
+                threads[i].join();}
+            catch(InterruptedException e){
+                e.printStackTrace();
+            }
+        }
         //Stopping all servers
         mazeGeneratingServer.stop();
         solveSearchProblemServer.stop();

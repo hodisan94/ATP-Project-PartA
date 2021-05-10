@@ -32,7 +32,8 @@ public class SimpleCompressorOutputStream  extends OutputStream {
                 throw new Exception("Can't create the maze...");
 
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                //System.out.println(e.getMessage());
+                e.printStackTrace();
             }
 
         ByteBuffer bb = ByteBuffer.allocate(b.length);
@@ -60,15 +61,8 @@ public class SimpleCompressorOutputStream  extends OutputStream {
                         }
                         bb.put((byte) oneCounter);
                         oneCounter = 0;
-                        /*} else {
-                            bb.put((byte) oneCounter);
-                            oneCounter = 0;
-
-                        }*/
                     }
-
                     zeroCounter++;
-                    //byte temp = b[j];
                 }
                 if (b[j - 1] == (byte) 0x01) {
                     if (zeroCounter > 0) {
@@ -80,11 +74,6 @@ public class SimpleCompressorOutputStream  extends OutputStream {
                         bb.put((byte) zeroCounter);
                         zeroCounter = 0;
 
-                        /*} else {
-                            bb.put((byte) zeroCounter);
-                            zeroCounter = 0;
-
-                        }*/
                     }
                     oneCounter++;
                 }
@@ -103,14 +92,10 @@ public class SimpleCompressorOutputStream  extends OutputStream {
                         }
                         bb.put((byte) oneCounter);
                         oneCounter = 0;
-                       /* } else {
-                            bb.put((byte) oneCounter);
-                            oneCounter = 0;
 
-                        }*/
                     }
                     zeroCounter++;
-                    //byte temp = b[j];
+
                 }
                 if (b[j - 1] == (byte) 0x01) {
                     if (zeroCounter > 0) {
@@ -122,11 +107,6 @@ public class SimpleCompressorOutputStream  extends OutputStream {
                         bb.put((byte) zeroCounter);
                         zeroCounter = 0;
 
-                        /*} else {
-                            bb.put((byte) zeroCounter);
-                            zeroCounter = 0;
-
-                        }*/
                     }
                     oneCounter++;
                 }
@@ -140,13 +120,7 @@ public class SimpleCompressorOutputStream  extends OutputStream {
                 zeroCounter = zeroCounter - 255;
             }
             bb.put((byte) zeroCounter);
-                //zeroCounter = 0;
 
-            /*} else {
-                bb.put((byte) zeroCounter);
-                //zeroCounter = 0;
-
-            }*/
         }
         else if (oneCounter > 0) {
             while (oneCounter >= 255) {
@@ -155,14 +129,9 @@ public class SimpleCompressorOutputStream  extends OutputStream {
                 oneCounter = oneCounter - 255;
             }
             bb.put((byte) oneCounter);
-                //oneCounter = 0;
-            /*} else {
-                bb.put((byte) oneCounter);
-                //oneCounter = 0;
 
-            }*/
         }
-        //System.out.println(b.length);
+;
         int pos = bb.position();
         byte[] compress = Arrays.copyOfRange(bb.array(), 0, pos);
         out.write(compress);
