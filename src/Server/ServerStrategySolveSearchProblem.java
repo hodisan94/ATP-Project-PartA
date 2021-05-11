@@ -24,7 +24,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
     /**
      * A constructor.
-     * The function fins all the files with mazes and solutions and saves the into the map
+     * The function finds all the files with mazes and solutions and saves the into the map
      */
     public ServerStrategySolveSearchProblem() {
         this.tempDirectoryPath = System.getProperty("java.io.tmpdir");

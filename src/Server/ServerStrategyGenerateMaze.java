@@ -15,7 +15,9 @@ import algorithms.mazeGenerators.Maze;
 public class ServerStrategyGenerateMaze implements IServerStrategy{
 
 
-
+    /**
+     * this strategy function read the size from the client and generate a new maze as the client requested
+     */
     @Override
     public void ServerStrategy(InputStream inFromClient, OutputStream outToClient) {
 

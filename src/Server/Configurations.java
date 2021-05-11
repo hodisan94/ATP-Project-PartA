@@ -38,6 +38,9 @@ public class Configurations {
     }
 
 
+    /**
+     * @return its a singelton class so if the object exists already we will return him.
+     */
     public static Configurations getInstance(){
         if (single_instance == null){
             single_instance = new Configurations();
@@ -45,6 +48,9 @@ public class Configurations {
         return single_instance;
     }
 
+    /**
+     * @return the type of searching algorithm
+     */
     public static ASearchingAlgorithm getMazeSearchingAlgorithm(){
         String maze_test = properties.getProperty("mazeGeneratingAlgorithm");
         String maze_search_name = properties.getProperty("mazeSearchingAlgorithm");
@@ -58,6 +64,9 @@ public class Configurations {
             return new BestFirstSearch(); // defult
     }
 
+    /**
+     * @return the maze algorithm that we will use
+     */
     public static AMazeGenerator getMazeGeneratingAlgorithm() {
         String maze_generate_name = properties.getProperty("mazeGeneratingAlgorithm");
         if (maze_generate_name.equals("SimpleMazeGenerator")){

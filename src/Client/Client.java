@@ -9,7 +9,7 @@ public class Client {
     private int serverPort;
     private IClientStrategy strategy;
 
-    public Client(InetAddress serverIP, int serverPort, IClientStrategy strategy) {
+    public Client(InetAddress serverIP, int serverPort, IClientStrategy strategy) { // same as we saw in the tirgol
         this.serverIP = serverIP;
         this.serverPort = serverPort;
         this.strategy = strategy;
