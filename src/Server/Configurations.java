@@ -26,7 +26,7 @@ public class Configurations {
 
     private Configurations(){
         try {
-            String filename = "resources/config.properties";
+            String filename = "resources\\config.properties";
             //input = new FileInputStream("C:\\ATP-Project-PartA\\resources\\config.properties");
             input = new FileInputStream(filename);
             properties.load(input);

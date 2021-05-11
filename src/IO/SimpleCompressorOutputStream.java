@@ -20,6 +20,13 @@ public class SimpleCompressorOutputStream  extends OutputStream {
 
     }
 
+    /**
+     * The function write the byte array to OutputStream
+     * This function compress the byte array.
+     * The function saves numbers that alternately represent a sequence of digits.
+     * @param b is a byte array
+     * @throws IOException
+     */
     @Override
     public void write(byte[] b) throws IOException {
 

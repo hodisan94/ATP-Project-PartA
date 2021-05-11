@@ -19,6 +19,14 @@ public class MyCompressorOutputStream extends OutputStream {
 
     }
 
+    /**
+     * The function write the byte array to OutputStream
+     * This function compress the byte array.
+     * Evey 32 cells in array b replace in 1 cell after compress.
+     * The 32 cells becomes a binary number with 8 characters and this binary number becomes to byte and saves in the outputStream.
+     * @param b is a byte array
+     * @throws IOException
+     */
     @Override
     public void write(byte[] b) throws IOException {
 

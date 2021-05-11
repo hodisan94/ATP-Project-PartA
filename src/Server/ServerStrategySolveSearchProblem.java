@@ -21,6 +21,11 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
     private String tempDirectoryPath;
     private HashMap<File,File> map = new HashMap<>();
 
+
+    /**
+     * A constructor.
+     * The function fins all the files with mazes and solutions and saves the into the map
+     */
     public ServerStrategySolveSearchProblem() {
         this.tempDirectoryPath = System.getProperty("java.io.tmpdir");
         this.algo = Configurations.getMazeSearchingAlgorithm();
@@ -62,6 +67,12 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
     }
 
+    /**
+     * If we don't have a solution this function creates files for maze and solution
+     * @param myMaze is the maze we want to save
+     * @param sol is the solution we want to save
+     * @param s part of the name tha represent the maze
+     */
     public void save_sol(Maze myMaze , Solution sol , String s ){
 
         File mazeFile = new File(tempDirectoryPath + "Maze - " + s);
@@ -88,13 +99,16 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
         }
     }
 
+    /**
+     * The unction search the maze in the map. If exists - returns the save solution, If doesn't exists - finds a solution saves it in the map
+     * @param myMaze is the maze we want to find it's solution
+     * @return the solution of the maze
+     */
     public Solution findOrSave(Maze myMaze){
 
         int mazeNum = 0;
 
         String s = ArrayToString(myMaze, mazeNum);
-
-
 
         Object solved = null;
 
@@ -152,6 +166,11 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
     }
 
 
+    /**
+     * @param maze the maze we want to save
+     * @param mazeNum the number that represent the maze
+     * @return part of the file's name of the maze
+     */
     private String ArrayToString(Maze maze, int mazeNum){
         String fileName = "";
 

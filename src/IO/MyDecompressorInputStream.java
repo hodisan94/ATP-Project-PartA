@@ -16,6 +16,15 @@ public class MyDecompressorInputStream extends InputStream {
         return 0;
     }
 
+
+    /**
+     * The function read from the outputStream and decompress the data to byte array
+     * Evey cell represent a binary number by byte.
+     * The function replace the byte number to binary number that represent 32 cells of the byte array of the maze
+     * @param b byte array to write into after the decompress
+     * @return
+     * @throws IOException
+     */
     @Override
     public int read(byte[] b) throws IOException {
 
