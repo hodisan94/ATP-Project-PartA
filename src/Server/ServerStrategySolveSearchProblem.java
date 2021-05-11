@@ -5,19 +5,13 @@ import IO.MyDecompressorInputStream;
 import algorithms.mazeGenerators.Maze;
 import algorithms.search.ASearchingAlgorithm;
 import algorithms.search.ISearchable;
-import algorithms.search.ISearchingAlgorithm;
 import algorithms.search.SearchableMaze;
 import algorithms.search.Solution;
-import algorithms.search.*;
 
 
 import java.io.*;
-import java.lang.reflect.Array;
-import java.nio.ByteBuffer;
 import java.util.Arrays;
-import java.util.Base64;
 import java.util.HashMap;
-import java.util.HashSet;
 
 
 public class ServerStrategySolveSearchProblem implements IServerStrategy{
@@ -25,8 +19,6 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
     public ASearchingAlgorithm algo;
     private String tempDirectoryPath;
-    //private int mazeNum = 0;
-    //private HashSet<File> map = new HashSet<>();
     private HashMap<File,File> map = new HashMap<>();
 
     public ServerStrategySolveSearchProblem() {
@@ -72,53 +64,34 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
     public void save_sol(Maze myMaze , Solution sol , String s ){
 
-
-        //String s = myMaze.ArrayToString(myMaze);
-        //String s = ArrayToString(myMaze, );
-
-
         File mazeFile = new File(tempDirectoryPath + "Maze - " + s);
 
         File solFile = new File(tempDirectoryPath + "Solution - " + s);
 
-        //map.add(nameFileMaze);
 
         try{
-
-            //System.out.println("line 82 - passed");
             OutputStream out = new MyCompressorOutputStream(new FileOutputStream(mazeFile));
             out.write(myMaze.toByteArray());
             out.flush();
 
-
-            //System.out.println("line 86 - passed");
             ObjectOutputStream objOut = new ObjectOutputStream(new FileOutputStream(solFile));
-            //System.out.println("line 88 - passed");
             objOut.writeObject(sol);
-            //System.out.println("line 90 - passed");
             objOut.flush();
-            //out.flush();
+
 
             map.put(mazeFile, solFile);
 
 
         }catch(Exception e){
-            //System.out.println("line 91");
-            //System.out.println(e.getMessage());
+
             e.printStackTrace();
         }
     }
 
     public Solution findOrSave(Maze myMaze){
 
-        /*String filePath = tempDirectoryPath + "Maze - " + myMaze.getRows() + ", " + myMaze.getColumns() + ", "+ myMaze.getStartPosition().getRowIndex() +
-                ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex()+"," ;*/
-
-        //System.out.println("la la la lal la ");
-
         int mazeNum = 0;
 
-        //String s = myMaze.ArrayToString(myMaze);
         String s = ArrayToString(myMaze, mazeNum);
 
 
@@ -128,12 +101,10 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
         File mazePath = new File(tempDirectoryPath+ "Maze - " + s);
         File solPath = new File(tempDirectoryPath+ "Solution - " + s);
 
-        //File newFile = new File(filePath + num);
 
         if (!map.isEmpty()){
             while (map.containsKey(mazePath)){
                 try {
-                    //System.out.println("im here..");
 
                     InputStream in = new MyDecompressorInputStream(new FileInputStream(mazePath));
 
@@ -154,53 +125,15 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
                     mazeNum++;
 
                 } catch (IOException e) {
-                    //System.out.println("line 155");
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
-                    //System.out.println("line 158");
                     e.printStackTrace();
                 }
 
-                //return (Solution) solved;
                 }
 
             }
 
- /*       while (newFile.exists()){
-            try {
-                InputStream in = new MyDecompressorInputStream(new FileInputStream(filePath + num));
-                String myMaze_byte = "";
-                String decompreesed_maze = "";
-                byte[] bytesArrayMaze = myMaze.toByteArray();
-                byte[] read = new byte[bytesArrayMaze.length];
-                for (int i = 0 ; i < bytesArrayMaze.length; i++){
-                    myMaze_byte += bytesArrayMaze[i];
-                    myMaze_byte += ",";
-                }
-                in.read(read);
-                for (int i = 0; i< read.length ;i++){
-                    decompreesed_maze += read[i];
-                    decompreesed_maze += ",";
-                }
-                if (decompreesed_maze.equals(myMaze_byte)) {
-                    ObjectInputStream input = new ObjectInputStream(new FileInputStream(tempDirectoryPath + "Solution - " + myMaze.getRows() + ", " + myMaze.getColumns() + ", "+ myMaze.getStartPosition().getRowIndex() +
-                            ", " + myMaze.getStartPosition().getColumnIndex() + ", " + myMaze.getGoalPosition().getRowIndex() + ", " + myMaze.getGoalPosition().getColumnIndex()+"," + num ));
-                    num++;
-                    solved = input.readObject();
-
-                    return (Solution) solved;
-                }
-
-                newFile = new File(filePath + num);
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-
-        }*/
         if (solved == null){
 
             ISearchable iSearchable = new SearchableMaze(myMaze);

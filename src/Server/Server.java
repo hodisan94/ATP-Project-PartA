@@ -43,8 +43,6 @@ public class Server {
 
                 }
                 catch (SocketTimeoutException e ){
-                    //System.out.println(e.getMessage());
-                    //System.out.println("Socket timeout");
                     e.printStackTrace();
                 }
 
@@ -83,7 +81,6 @@ public class Server {
             clientSocket.getOutputStream().close();
             clientSocket.close();
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
 

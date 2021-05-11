@@ -144,6 +144,9 @@ public class Maze implements Serializable {
     }
 
 
+    /**
+     * @return The maze as byte array
+     */
     public byte[] toByteArray() {
         byte[] b;
         ByteBuffer buffer = ByteBuffer.allocate(Integer.BYTES * (6 + (this.getRows() * this.getColumns())));
@@ -173,7 +176,11 @@ public class Maze implements Serializable {
     }
 
 
-
+    /**
+     * A constructor
+     * @param b is the maze as byte array
+     * Create Maze from byte array
+     */
     public Maze(byte[] b){
 
         ByteBuffer bb = ByteBuffer.allocate(b.length);
@@ -249,54 +256,4 @@ public class Maze implements Serializable {
         return myMaze[0].length;
     }
 
-    /*public String ArrayToString(Maze maze){
-        String fileName = "";
-
-        byte[] b = maze.toByteArray();
-
-        int length = 0;
-
-        if((maze.getRows()*maze.getColumns()) < 7)
-            length = 1;
-        else
-            length = (maze.getRows()*maze.getColumns())/7;
-
-        byte[] bytes = new byte[12 + length];
-
-        int counter = 0;
-
-        for (int i = 4; i <= 24; i += 4) {
-            if (b[i - 2] != 0) {
-                bytes[counter] = b[i - 2];
-            } else {
-                bytes[counter] = (byte) 0x00;
-            }
-            counter++;
-            bytes[counter] = b[i - 1]; // now we have the rows the cols the start pos and goal pos
-            counter++;
-        }
-
-
-        for (int i = 27; i < b.length; i +=28 ){
-            String s = "";
-
-            for(int j = i; j < i + 28; j += 4) {
-                if (j > b.length)
-                    break;
-                s += b[j];
-            }
-
-            bytes[counter] = (Byte.parseByte(s, 2));
-            counter++;
-        }
-
-        for (int i = 0; i < bytes.length; i++){
-            if(i == bytes.length - 1)
-                fileName += bytes[i];
-            else
-                fileName += bytes[i] + ", ";
-        }
-
-        return fileName;
-    }*/
 }
