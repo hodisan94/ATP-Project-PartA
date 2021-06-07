@@ -8,10 +8,7 @@ import algorithms.search.BestFirstSearch;
 import algorithms.search.BreadthFirstSearch;
 import algorithms.search.DepthFirstSearch;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Properties;
 
 public class Configurations {
@@ -84,6 +81,27 @@ public class Configurations {
         }
         else
         return 1;//defult size of 1 thread.
+    }
+    public static void setProp(int size, String mazeGeneratingAlgorithm, String mazeSearchingAlgorithm) {
+        OutputStream output = null;
+        try {
+            output = new FileOutputStream("src/config.properties");
+            Properties prop = new Properties();
+            prop.setProperty("threadPoolSize", Integer.toString(size));
+            prop.setProperty("mazeGeneratingAlgorithm", mazeGeneratingAlgorithm);
+            prop.setProperty("mazeSearchingAlgorithm", mazeSearchingAlgorithm);
+            prop.store(output, null);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if (output != null) {
+                try {
+                    output.close();
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
     }
 
 
