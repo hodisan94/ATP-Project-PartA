@@ -7,24 +7,24 @@ import algorithms.search.ASearchingAlgorithm;
 import algorithms.search.BestFirstSearch;
 import algorithms.search.BreadthFirstSearch;
 import algorithms.search.DepthFirstSearch;
-
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class Configurations {
-
     private static Properties properties = new Properties();
     private static int threadPoolSize = 1;
     private static String mazeGeneratingAlgorithm;
     private static String mazeSearchingAlgorithm;
     private static InputStream input = null;
-
     private static Configurations single_instance = null;
 
     private Configurations() {
         try {
             String filename = "resources\\config.properties";
-            //input = new FileInputStream("C:\\ATP-Project-PartA\\resources\\config.properties");
             input = new FileInputStream(filename);
             properties.load(input);
         } catch (FileNotFoundException var2) {
@@ -32,19 +32,21 @@ public class Configurations {
         } catch (IOException var3) {
             var3.printStackTrace();
         }
+
     }
 
     public static Configurations getInstance() {
         if (single_instance == null) {
             single_instance = new Configurations();
         }
+
         return single_instance;
     }
 
     public static ASearchingAlgorithm getMazeSearchingAlgorithm() {
         String maze_test = properties.getProperty("mazeGeneratingAlgorithm");
         String maze_search_name = properties.getProperty("mazeSearchingAlgorithm");
-        if (maze_search_name.equals("BreadthFirstSearch")){
+        if (maze_search_name.equals("BreadthFirstSearch")) {
             return new BreadthFirstSearch();
         } else {
             return (ASearchingAlgorithm)(maze_search_name.equals("DepthFirstSearch") ? new DepthFirstSearch() : new BestFirstSearch());
@@ -61,25 +63,29 @@ public class Configurations {
         int size = Integer.valueOf(thread_size);
         return size > 0 ? size : 1;
     }
+
     public static void setProp(int size, String mazeGeneratingAlgorithm, String mazeSearchingAlgorithm) {
-        OutputStream output = null;
+        FileOutputStream output = null;
+
         try {
             output = new FileOutputStream("src/config.properties");
             Properties prop = new Properties();
             prop.setProperty("threadPoolSize", Integer.toString(size));
             prop.setProperty("mazeGeneratingAlgorithm", mazeGeneratingAlgorithm);
             prop.setProperty("mazeSearchingAlgorithm", mazeSearchingAlgorithm);
-            prop.store(output, null);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            prop.store(output, (String)null);
+        } catch (Exception var13) {
+            System.out.println(var13.getMessage());
         } finally {
             if (output != null) {
                 try {
                     output.close();
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
+                } catch (IOException var12) {
+                    System.out.println(var12.getMessage());
                 }
             }
+
         }
+
     }
 }
