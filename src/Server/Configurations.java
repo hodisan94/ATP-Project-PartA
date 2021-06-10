@@ -8,10 +8,7 @@ import algorithms.search.BestFirstSearch;
 import algorithms.search.BreadthFirstSearch;
 import algorithms.search.DepthFirstSearch;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Properties;
 
 public class Configurations {
@@ -84,6 +81,69 @@ public class Configurations {
         }
         else
         return 1;//defult size of 1 thread.
+    }
+
+    public static void setThreadPoolSize(String numOfThreads){
+        try{
+            FileOutputStream outputStream = new FileOutputStream("./resources/config.properties");
+
+            try{
+                Properties prop = new Properties();
+                prop.setProperty("threadPoolSize", numOfThreads);
+                prop.store(outputStream, (String)null);
+            }catch (Throwable t1){
+                try{
+                    outputStream.close();
+                }catch (Throwable t2){
+                    t1.addSuppressed(t2);
+                }
+                throw t1;
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void setMazeGeneratingAlgorithm(String generating){
+        try{
+            FileOutputStream outputStream = new FileOutputStream("./resources/config.properties");
+
+            try{
+                Properties prop = new Properties();
+                prop.setProperty("mazeGeneratingAlgorithm", generating);
+                prop.store(outputStream, (String)null);
+            }catch (Throwable t1){
+                try{
+                    outputStream.close();
+                }catch (Throwable t2){
+                    t1.addSuppressed(t2);
+                }
+                throw t1;
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void setMazeSearchingAlgorithm(String searching){
+        try{
+            FileOutputStream outputStream = new FileOutputStream("./resources/config.properties");
+
+            try{
+                Properties prop = new Properties();
+                prop.setProperty("mazeSearchingAlgorithm", searching);
+                prop.store(outputStream, (String)null);
+            }catch (Throwable t1){
+                try{
+                    outputStream.close();
+                }catch (Throwable t2){
+                    t1.addSuppressed(t2);
+                }
+                throw t1;
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
 
