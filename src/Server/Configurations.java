@@ -103,17 +103,19 @@ public class Configurations {
 
                 objArr[0] = Integer.parseInt(propArr[0]);
 
-                switch (propArr[1]){
-                    case "EmptyMazeGenerator" -> objArr[1] = new EmptyMazeGenerator();
-                    case "SimpleMazeGenerator" -> objArr[1] = new SimpleMazeGenerator();
-                    case "MyMazeGenerator" -> objArr[1] = new MyMazeGenerator();
-                }
+                if(propArr[1].equals("EmptyMazeGenerator"))
+                    objArr[1] = new EmptyMazeGenerator();
+                else if(propArr[1].equals("SimpleMazeGenerator"))
+                    objArr[1] = new SimpleMazeGenerator();
+                else if(propArr[1].equals("MyMazeGenerator"))
+                    objArr[1] = new MyMazeGenerator();
 
-                switch (propArr[2]){
-                    case "BestFirstSearch" -> objArr[1] = new BestFirstSearch();
-                    case "BreadthFirstSearch" -> objArr[1] = new BreadthFirstSearch();
-                    case "DepthFirstSearch" -> objArr[1] = new DepthFirstSearch();
-                }
+                if(propArr[2].equals("BestFirstSearch"))
+                    objArr[2] = new BestFirstSearch();
+                else if(propArr[2].equals("BreadthFirstSearch"))
+                    objArr[2] = new BreadthFirstSearch();
+                else if(propArr[2].equals("DepthFirstSearch"))
+                    objArr[2] = new DepthFirstSearch();
 
                 var5 = objArr;
 
