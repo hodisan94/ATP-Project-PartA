@@ -1,6 +1,7 @@
 package Server;
 
 import algorithms.mazeGenerators.AMazeGenerator;
+import algorithms.mazeGenerators.EmptyMazeGenerator;
 import algorithms.mazeGenerators.MyMazeGenerator;
 import algorithms.mazeGenerators.SimpleMazeGenerator;
 import algorithms.search.ASearchingAlgorithm;
@@ -68,7 +69,7 @@ public class Configurations {
         FileOutputStream output = null;
 
         try {
-            output = new FileOutputStream("src/config.properties");
+            output = new FileOutputStream("resources/config.properties");
             Properties prop = new Properties();
             prop.setProperty("threadPoolSize", Integer.toString(size));
             prop.setProperty("mazeGeneratingAlgorithm", mazeGeneratingAlgorithm);
@@ -86,6 +87,54 @@ public class Configurations {
             }
 
         }
+    }
+
+
+    public Object[] LoadProperties(){
+        try{
+            FileInputStream inputStream = new FileInputStream("resources/config.properties");
+
+            Object[] var5;
+            try{
+                Properties prop = new Properties();
+                prop.load(inputStream);
+                String[] propArr = new String[]{prop.getProperty("threadPoolSize"), prop.getProperty("mazeGeneratingAlgorithm"), prop.getProperty("mazeSearchingAlgorithm")};
+                Object[] objArr = new Object[3];
+
+                objArr[0] = Integer.parseInt(propArr[0]);
+
+                switch (propArr[1]){
+                    case "EmptyMazeGenerator" -> objArr[1] = new EmptyMazeGenerator();
+                    case "SimpleMazeGenerator" -> objArr[1] = new SimpleMazeGenerator();
+                    case "MyMazeGenerator" -> objArr[1] = new MyMazeGenerator();
+                }
+
+                switch (propArr[2]){
+                    case "BestFirstSearch" -> objArr[1] = new BestFirstSearch();
+                    case "BreadthFirstSearch" -> objArr[1] = new BreadthFirstSearch();
+                    case "DepthFirstSearch" -> objArr[1] = new DepthFirstSearch();
+                }
+
+                var5 = objArr;
+
+            }catch (Throwable var7){
+                try{
+                    inputStream.close();
+                }catch (Throwable var6){
+                    var7.addSuppressed(var6);
+                }
+                throw var7;
+            }
+
+            inputStream.close();
+            return var5;
+
+
+        }catch (IOException e){
+            e.printStackTrace();
+            return null;
+        }
 
     }
+
 }
