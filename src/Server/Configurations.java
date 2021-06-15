@@ -69,7 +69,7 @@ public class Configurations {
         FileOutputStream output = null;
 
         try {
-            output = new FileOutputStream("resources/config.properties");
+            output = new FileOutputStream("/config.properties");
             Properties prop = new Properties();
             prop.setProperty("threadPoolSize", Integer.toString(size));
             prop.setProperty("mazeGeneratingAlgorithm", mazeGeneratingAlgorithm);
